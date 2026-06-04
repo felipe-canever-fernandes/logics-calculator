@@ -1,5 +1,0 @@
-print(F0)
-print(F0.25)
-print(F0.5)
-print(F0.75)
-print(F1)
