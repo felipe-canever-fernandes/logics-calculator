@@ -25,7 +25,7 @@ class GrammarTransformer(Transformer[float, float]):
 	def unknownness(self, items: list[float]) -> float:
 		x = float(items[0])
 		y = self.negation([x])
-		return self.biimplication([x, y])
+		return self.bi_implication([x, y])
 	
 	def nonfalsehood(self, items: list[float]) -> float:
 		x = float(items[0])
@@ -46,7 +46,7 @@ class GrammarTransformer(Transformer[float, float]):
 		
 		return 1 - x + y
 
-	def biimplication(self, items: list[float]) -> float:
+	def bi_implication(self, items: list[float]) -> float:
 		x = float(items[0])
 		y = float(items[1])
 		

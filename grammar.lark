@@ -7,14 +7,14 @@
 
 ?binary	: unary
 		| implication
-		| biimplication
+		| bi_implication
 		| weak_conjunction
 		| strong_conjunction
 		| weak_disjunction
 		| strong_disjunction
 
 implication			: binary "->" unary
-biimplication		: binary "<->" unary
+bi_implication		: binary "<->" unary
 weak_conjunction	: binary "*" unary
 strong_conjunction	: binary "(*)" unary
 weak_disjunction	: binary "+" unary
