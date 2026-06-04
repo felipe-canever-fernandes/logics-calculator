@@ -1,0 +1,46 @@
+?program	: (statement "\n")*
+
+?statement	: expression
+			| print
+
+?expression	: binary
+
+?binary	: unary
+		| implication
+		| biimplication
+		| weak_conjunction
+		| strong_conjunction
+		| weak_disjunction
+		| strong_disjunction
+
+implication			: binary "->" unary
+biimplication		: binary "<->" unary
+weak_conjunction	: binary "*" unary
+strong_conjunction	: binary "(*)" unary
+weak_disjunction	: binary "+" unary
+strong_disjunction	: binary "(+)" unary
+
+?unary	: negation
+		| truth
+		| unknownness
+		| nonfalsehood
+		| falsehood
+		| group
+		| constant
+
+negation		: "¬" unary
+truth			: "T" unary
+unknownness		: "U" unary
+nonfalsehood	: "NF" unary
+falsehood		: "F" unary
+
+group 		: "(" expression ")"
+
+?constant	: real
+?real		: SIGNED_NUMBER
+
+print : "print" "(" expression ")"
+
+%import common.SIGNED_NUMBER
+%import common.WS
+%ignore WS
