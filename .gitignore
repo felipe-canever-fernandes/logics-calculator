@@ -222,5 +222,5 @@ __marimo__/
 # Visual Studio Code
 .vscode/
 
-# Program
-program.txt
+# Programs
+*.logic
