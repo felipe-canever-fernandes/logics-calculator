@@ -91,7 +91,7 @@ class GrammarTransformer(Transformer[float, float]):
 		
 	
 program = ""
-with open("program.txt") as file:
+with open("program.logic") as file:
 	program = file.read()
 
 try:
