@@ -19,6 +19,10 @@ export const transformer = {
         const conjoined = transformer.conjunction([x, negated]);
         return transformer.strong_negation([conjoined]);
     },
+    contradiction([x]) {
+        const negated = transformer.strong_negation([x]);
+        return transformer.conjunction([x, negated]);
+    },
     value([token]) {
         return Number(token.value);
     },

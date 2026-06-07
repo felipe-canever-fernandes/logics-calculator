@@ -26,6 +26,11 @@ export const transformer = {
 		return transformer.strong_negation([conjoined]);
 	},
 
+	contradiction([x]: [number]) {
+		const negated = transformer.strong_negation([x]);
+		return transformer.conjunction([x, negated]);
+	},
+
 	value([token]: [Token]) {
 		return Number(token.value);
 	},
