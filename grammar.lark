@@ -6,6 +6,7 @@
 			| unary
 
 ?binary	: disjunction
+		| conjunction
 		| l_implication
 		| j_implication
 
@@ -20,6 +21,7 @@ distinction		: "\\nabla" unary
 value			: NUMBER
 
 disjunction		: expression "\\vee" unary
+conjunction		: expression "\\land" unary
 l_implication	: expression "\\rightarrow" unary
 j_implication	: expression "\\roundimplies" unary
 

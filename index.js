@@ -17,6 +17,13 @@ const transformer = {
 		return Math.max(x, y);
 	},
 
+	conjunction([x, y]) {
+		const negated_x = transformer.negation([x]); 
+		const negated_y = transformer.negation([y]);
+		const disjoined = transformer.disjunction([negated_x, negated_y]);
+		return transformer.negation([disjoined]);
+	},
+
 	l_implication([x, y]) {
 		return Math.min(1, 1 - x + y);
 	},
