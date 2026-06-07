@@ -29,10 +29,10 @@ const transformer = {
 	},
 
 	conjunction([x, y]) {
-		const negated_x = transformer.negation([x]); 
-		const negated_y = transformer.negation([y]);
+		const negated_x = transformer.weak_negation([x]);
+		const negated_y = transformer.weak_negation([y]);
 		const disjoined = transformer.disjunction([negated_x, negated_y]);
-		return transformer.negation([disjoined]);
+		return transformer.weak_negation([disjoined]);
 	},
 
 	l_implication([x, y]) {
@@ -41,12 +41,12 @@ const transformer = {
 
 	j_implication([x, y]) {
 		const distinguished = transformer.distinction([x]);
-		const negated = transformer.negation([distinguished]);
+		const negated = transformer.weak_negation([distinguished]);
 		return transformer.disjunction([negated, y]);
 	},
 };
 
-const parser = get_parser({transformer});
+const parser = get_parser({ transformer });
 
 const inputField = document.querySelector("#input-field");
 const inputButton = document.querySelector("#input-button");
