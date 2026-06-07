@@ -1,7 +1,7 @@
 import { get_parser } from "./parser.js";
 
 const transformer = {
-	negation([x]) {
+	weak_negation([x]) {
 		return 1 - x
 	},
 

@@ -10,12 +10,12 @@
 		| l_implication
 		| j_implication
 
-?unary	: negation
+?unary	: weak_negation
 		| distinction
 		| parentheses
 		| value
 
-negation		: "\\neg" unary
+weak_negation	: "\\neg" unary
 distinction		: "\\nabla" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
