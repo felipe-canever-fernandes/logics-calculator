@@ -16,7 +16,7 @@ function calculate() {
 	const input = getInput();
 	console.log(input);
 	const result = parser.parse(input);
-	addOutput(result);
+	addOutput(input, result);
 	clearInput();
 }
 

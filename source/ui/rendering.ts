@@ -4,7 +4,9 @@ export function clearInput() {
 	inputField.value = "";
 }
 
-export function addOutput(latex: string) {
+export function addOutput(input: string, result: string) {
+	const latex = `${input}=${result}`;
+
 	const mathDiv = document.createElement("math-div");
 	mathDiv.innerHTML = latex;
 
