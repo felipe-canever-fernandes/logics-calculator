@@ -20,6 +20,7 @@ main {
 
 .output > li {
 	display: block;
+	margin: 8px;
 }
 
 .input button {
