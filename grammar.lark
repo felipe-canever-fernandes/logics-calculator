@@ -6,14 +6,16 @@
             | unary
 
 ?binary : disjunction
+        | l_implication
 
 ?unary  : negation
         | distinction
         | value
 
-negation    : "\\neg" unary
-distinction : "\\nabla" unary
-disjunction : expression "\\vee" unary
+negation        : "\\neg" unary
+distinction     : "\\nabla" unary
+disjunction     : expression "\\vee" unary
+l_implication   : expression "\\rightarrow" unary
 
 value   : NUMBER
 

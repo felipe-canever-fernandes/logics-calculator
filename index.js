@@ -16,6 +16,10 @@ const transformer = {
 	disjunction([x, y]) {
 		return Math.max(x, y);
 	},
+
+	l_implication([x, y]) {
+		return Math.min(1, 1 - x + y);
+	},
 };
 
 const parser = get_parser({transformer});
