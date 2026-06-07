@@ -1,4 +1,4 @@
-PARSER_FILE_PATH=source/parser.js
+PARSER_FILE_PATH=source/logic/lark.js
 
 build:
 	npm run build

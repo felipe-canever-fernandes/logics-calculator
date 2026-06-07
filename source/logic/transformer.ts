@@ -1,4 +1,4 @@
-import { Token } from "../parser.js";
+import { Token } from "./lark.js";
 
 export const transformer = {
 	weak_negation([x]: [number]) {
