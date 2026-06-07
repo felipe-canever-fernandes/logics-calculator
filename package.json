@@ -1,0 +1,12 @@
+{
+  "name": "logics-calculator",
+  "description": "An arithmetic and algebraic logic calculator.",
+  "author": "Felipe Canever Fernandes",
+  "license": "MIT",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  }
+}
