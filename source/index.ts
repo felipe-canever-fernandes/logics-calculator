@@ -1,13 +1,5 @@
+import { inputField, inputButton, outputDiv } from "./ui/dom.js";
 import { parser } from "./logic/parser.js"
-
-const inputField = document
-	.querySelector("#input-field") as HTMLMathFieldElement;
-
-const inputButton = document
-	.querySelector("#input-button") as HTMLButtonElement;
-
-const outputDiv = document
-	.querySelector("#output") as HTMLDivElement;
 
 inputField.addEventListener("keydown", (event: KeyboardEvent) => {
 	if (event.key === "Enter") {
