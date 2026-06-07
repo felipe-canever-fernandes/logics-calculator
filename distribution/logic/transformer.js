@@ -30,9 +30,9 @@ export const transformer = {
         return Math.max(x, y);
     },
     conjunction([x, y]) {
-        const negated_x = transformer.weak_negation([x]);
-        const negated_y = transformer.weak_negation([y]);
-        const disjoined = transformer.disjunction([negated_x, negated_y]);
+        const negatedX = transformer.weak_negation([x]);
+        const negatedY = transformer.weak_negation([y]);
+        const disjoined = transformer.disjunction([negatedX, negatedY]);
         return transformer.weak_negation([disjoined]);
     },
     l_implication([x, y]) {
@@ -44,8 +44,8 @@ export const transformer = {
         return transformer.disjunction([negated, y]);
     },
     l_bi_implication([x, y]) {
-        const implicated_x_y = transformer.l_implication([x, y]);
-        const implicated_y_x = transformer.l_implication([y, x]);
-        return transformer.conjunction([implicated_x_y, implicated_y_x]);
+        const implicatedXY = transformer.l_implication([x, y]);
+        const implicatedYX = transformer.l_implication([y, x]);
+        return transformer.conjunction([implicatedXY, implicatedYX]);
     },
 };
