@@ -14,6 +14,12 @@ const transformer = {
 		return x == 0 ? 0 : 1;
 	},
 
+	crisp_truthness([x]) {
+		const negated = transformer.weak_negation([x]);
+		const distinguished = transformer.distinction([negated]);
+		return transformer.weak_negation([distinguished]);
+	},
+
 	value([token]) {
 		return Number(token.value);
 	},

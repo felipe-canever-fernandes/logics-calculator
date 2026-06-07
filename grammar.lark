@@ -13,12 +13,14 @@
 ?unary	: weak_negation
 		| strong_negation
 		| distinction
+		| crisp_truthness
 		| parentheses
 		| value
 
 weak_negation	: "\\sim" unary
 strong_negation	: "\\neg" unary
 distinction		: "\\nabla" unary
+crisp_truthness	: "\\Delta" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
 
