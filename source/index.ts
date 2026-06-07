@@ -1,5 +1,6 @@
-import { inputField, inputButton, outputDiv } from "./ui/dom.js";
+import { inputField, inputButton } from "./ui/dom.js";
 import { parser } from "./logic/parser.js"
+import { setOutput } from "./ui/rendering.js";
 
 inputField.addEventListener("keydown", (event: KeyboardEvent) => {
 	if (event.key === "Enter") {
@@ -20,12 +21,4 @@ function calculate() {
 
 function getInput() {
 	return inputField.getValue();
-}
-
-function setOutput(latex: string) {
-	const mathDiv = document.createElement("math-div");
-	mathDiv.innerHTML = latex;
-
-	outputDiv.replaceChildren();
-	outputDiv.appendChild(mathDiv);
 }
