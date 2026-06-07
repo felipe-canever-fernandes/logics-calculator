@@ -16,8 +16,8 @@
 		| parentheses
 		| value
 
-weak_negation	: "\\neg" unary
-strong_negation	: "\\sim" unary
+weak_negation	: "\\sim" unary
+strong_negation	: "\\neg" unary
 distinction		: "\\nabla" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
