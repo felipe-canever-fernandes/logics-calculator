@@ -29,9 +29,9 @@ const transformer = {
 	},
 
 	j_implication([x, y]) {
-		const distinction = transformer.distinction([x]);
-		const negation = transformer.negation([distinction]);
-		return transformer.disjunction([negation, y]);
+		const distinguished = transformer.distinction([x]);
+		const negated = transformer.negation([distinguished]);
+		return transformer.disjunction([negated, y]);
 	},
 };
 
