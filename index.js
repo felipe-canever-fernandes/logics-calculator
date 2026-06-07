@@ -20,6 +20,12 @@ const transformer = {
 	l_implication([x, y]) {
 		return Math.min(1, 1 - x + y);
 	},
+
+	j_implication([x, y]) {
+		const distinction = transformer.distinction([x]);
+		const negation = transformer.negation([distinction]);
+		return transformer.disjunction([negation, y]);
+	},
 };
 
 const parser = get_parser({transformer});
