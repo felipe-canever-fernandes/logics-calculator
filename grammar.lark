@@ -1,25 +1,25 @@
-?start  : expression
+?start	: expression
 
-?expression : operation
+?expression	: operation
 
-?operation  : binary
-            | unary
+?operation	: binary
+			| unary
 
-?binary : disjunction
-        | l_implication
+?binary	: disjunction
+		| l_implication
 
-?unary  : negation
-        | distinction
-        | parentheses
-        | value
+?unary	: negation
+		| distinction
+		| parentheses
+		| value
 
-negation        : "\\neg" unary
-distinction     : "\\nabla" unary
-?parentheses    : "\\left(" expression "\\right)"
-value           : NUMBER
+negation		: "\\neg" unary
+distinction		: "\\nabla" unary
+?parentheses	: "\\left(" expression "\\right)"
+value			: NUMBER
 
-disjunction     : expression "\\vee" unary
-l_implication   : expression "\\rightarrow" unary
+disjunction		: expression "\\vee" unary
+l_implication	: expression "\\rightarrow" unary
 
 %import common.NUMBER
 %import common.WS
