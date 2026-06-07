@@ -20,6 +20,12 @@ export const transformer = {
 		return transformer.weak_negation([distinguished]);
 	},
 
+	consistency([x]: [number]) {
+		const negated = transformer.weak_negation([x]);
+		const conjoined = transformer.conjunction([x, negated]);
+		return transformer.strong_negation([conjoined]);
+	},
+
 	value([token]: [Token]) {
 		return Number(token.value);
 	},

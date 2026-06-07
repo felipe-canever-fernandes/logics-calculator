@@ -15,6 +15,7 @@
 		| strong_negation
 		| distinction
 		| crisp_truthness
+		| consistency
 		| parentheses
 		| value
 
@@ -22,6 +23,7 @@ weak_negation	: "\\sim" unary
 strong_negation	: "\\neg" unary
 distinction		: "\\nabla" unary
 crisp_truthness	: "\\Delta" unary
+consistency		: "o" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
 

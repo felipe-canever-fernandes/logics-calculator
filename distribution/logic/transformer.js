@@ -14,6 +14,11 @@ export const transformer = {
         const distinguished = transformer.distinction([negated]);
         return transformer.weak_negation([distinguished]);
     },
+    consistency([x]) {
+        const negated = transformer.weak_negation([x]);
+        const conjoined = transformer.conjunction([x, negated]);
+        return transformer.strong_negation([conjoined]);
+    },
     value([token]) {
         return Number(token.value);
     },
