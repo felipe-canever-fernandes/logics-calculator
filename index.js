@@ -5,17 +5,17 @@ const transformer = {
 		return 1 - x
 	},
 
-	disjunction([x, y]) {
-		return Math.max(x, y);
-	},
-
 	distinction([x]) {
 		return x == 0 ? 0 : 1;
 	},
 
 	value([token]) {
 		return Number(token.value);
-	}
+	},
+
+	disjunction([x, y]) {
+		return Math.max(x, y);
+	},
 };
 
 const parser = get_parser({transformer});
