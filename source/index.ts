@@ -55,7 +55,7 @@ const transformer = {
 const parser = get_parser({ transformer });
 
 const inputField = document
-	.querySelector("#input-field") as any;
+	.querySelector("#input-field") as HTMLMathFieldElement;
 
 const inputButton = document
 	.querySelector("#input-button") as HTMLButtonElement;
