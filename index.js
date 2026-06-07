@@ -2,7 +2,7 @@ const inputField = document.querySelector("#input-field");
 
 const inputButton = document.querySelector("#input-button");
 inputButton.addEventListener("click", () => {
-	const latex = inputField.innerHTML;
+	const latex = inputField.getValue();
 	setOutput(latex);
 })
 
