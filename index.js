@@ -59,11 +59,15 @@ const inputButton = document.querySelector("#input-button");
 const outputDiv = document.querySelector("#output");
 
 inputButton.addEventListener("click", () => {
+	calculate();
+})
+
+function calculate() {
 	const input = getInput();
 	console.log(input);
 	const result = parser.parse(input);
 	setOutput(result);
-})
+}
 
 function getInput() {
 	return inputField.getValue();
