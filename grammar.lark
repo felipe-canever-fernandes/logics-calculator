@@ -9,6 +9,7 @@
 		| conjunction
 		| l_implication
 		| j_implication
+		| l_bi_implication
 
 ?unary	: weak_negation
 		| strong_negation
@@ -24,10 +25,11 @@ crisp_truthness	: "\\Delta" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
 
-disjunction		: expression "\\lor" unary
-conjunction		: expression "\\land" unary
-l_implication	: expression "\\rightarrow" unary
-j_implication	: expression "\\roundimplies" unary
+disjunction			: expression "\\lor" unary
+conjunction			: expression "\\land" unary
+l_implication		: expression "\\rightarrow" unary
+j_implication		: expression "\\roundimplies" unary
+l_bi_implication	: expression "\\leftrightarrow" unary
 
 %import common.NUMBER
 %import common.WS

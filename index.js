@@ -44,6 +44,12 @@ const transformer = {
 		const negated = transformer.weak_negation([distinguished]);
 		return transformer.disjunction([negated, y]);
 	},
+
+	l_bi_implication([x, y]) {
+		const implicated_x_y = transformer.l_implication([x, y]);
+		const implicated_y_x = transformer.l_implication([y, x]);
+		return transformer.conjunction([implicated_x_y, implicated_y_x]);
+	},
 };
 
 const parser = get_parser({ transformer });
