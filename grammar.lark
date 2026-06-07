@@ -20,7 +20,7 @@ distinction		: "\\nabla" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER
 
-disjunction		: expression "\\vee" unary
+disjunction		: expression "\\lor" unary
 conjunction		: expression "\\land" unary
 l_implication	: expression "\\rightarrow" unary
 j_implication	: expression "\\roundimplies" unary
