@@ -11,11 +11,13 @@
 		| j_implication
 
 ?unary	: weak_negation
+		| strong_negation
 		| distinction
 		| parentheses
 		| value
 
 weak_negation	: "\\neg" unary
+strong_negation	: "\\sim" unary
 distinction		: "\\nabla" unary
 ?parentheses	: "\\left(" expression "\\right)"
 value			: NUMBER

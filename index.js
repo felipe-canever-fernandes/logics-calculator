@@ -5,6 +5,11 @@ const transformer = {
 		return 1 - x
 	},
 
+	strong_negation([x]) {
+		const distinguished = transformer.distinction([x]);
+		return transformer.weak_negation([distinguished]);
+	},
+
 	distinction([x]) {
 		return x == 0 ? 0 : 1;
 	},
