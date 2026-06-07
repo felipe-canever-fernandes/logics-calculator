@@ -1,0 +1,10 @@
+?start: negation
+
+negation: "\\neg" value
+
+value: NUMBER
+
+%import common.NUMBER
+%import common.WS
+
+%ignore WS
