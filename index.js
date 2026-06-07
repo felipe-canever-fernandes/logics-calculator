@@ -5,6 +5,10 @@ const transformer = {
 		return 1 - x
 	},
 
+	disjunction([x, y]) {
+		return Math.max(x, y);
+	},
+
 	value([token]) {
 		return Number(token.value);
 	}

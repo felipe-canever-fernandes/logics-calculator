@@ -1,8 +1,19 @@
-?start: negation
+?start  : expression
 
-negation: "\\neg" value
+?expression : operation
 
-value: NUMBER
+?operation  : binary
+            | unary
+
+?binary : disjunction
+
+?unary  : negation
+        | value
+
+negation    : "\\neg" unary
+disjunction : expression "\\vee" unary
+
+value   : NUMBER
 
 %import common.NUMBER
 %import common.WS
