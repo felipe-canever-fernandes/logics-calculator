@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": "source",
+    "outDir": "distribution",
+    "module": "ESNext",
+    "target": "ES2020",
+    "strict": true,
+    "allowJs": true
+  },
+  "include": [
+    "source"
+  ]
+}
