@@ -1,7 +1,4 @@
-import { get_parser } from "./parser.js";
-import { transformer } from "./logic/transformer.js";
-
-const parser = get_parser({ transformer });
+import { parser } from "./logic/parser.js"
 
 const inputField = document
 	.querySelector("#input-field") as HTMLMathFieldElement;
