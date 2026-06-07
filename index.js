@@ -30,6 +30,7 @@ const outputDiv = document.querySelector("#output");
 
 inputButton.addEventListener("click", () => {
 	const input = getInput();
+	console.log(input);
 	const result = parser.parse(input);
 	setOutput(result);
 })
