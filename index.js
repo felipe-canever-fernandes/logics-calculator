@@ -9,6 +9,10 @@ const transformer = {
 		return Math.max(x, y);
 	},
 
+	distinction([x]) {
+		return x == 0 ? 0 : 1;
+	},
+
 	value([token]) {
 		return Number(token.value);
 	}
