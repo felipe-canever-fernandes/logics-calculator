@@ -18,6 +18,10 @@ main {
 	justify-content: flex-end;
 }
 
+.output > li {
+	display: block;
+}
+
 .input button {
 	flex-basis: 48px;
 	display: flex;

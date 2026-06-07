@@ -4,5 +4,5 @@ export const inputField = document
 export const inputButton = document
 	.querySelector("#input-button") as HTMLButtonElement;
 
-export const outputDiv = document
-	.querySelector("#output") as HTMLDivElement;
+export const outputList = document
+	.querySelector("#output") as HTMLOListElement;

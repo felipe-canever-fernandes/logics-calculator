@@ -1,13 +1,15 @@
-import { inputField, outputDiv } from "./dom.js";
+import { inputField, outputList } from "./dom.js";
 
 export function clearInput() {
 	inputField.value = "";
 }
 
-export function setOutput(latex: string) {
+export function addOutput(latex: string) {
 	const mathDiv = document.createElement("math-div");
 	mathDiv.innerHTML = latex;
 
-	outputDiv.replaceChildren();
-	outputDiv.appendChild(mathDiv);
+	const listItem = document.createElement("li");
+	listItem.appendChild(mathDiv);
+
+	outputList.appendChild(listItem);
 }
