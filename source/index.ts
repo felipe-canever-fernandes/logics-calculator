@@ -7,11 +7,11 @@ inputField.addEventListener("keydown", (event: KeyboardEvent) => {
 	if (event.key === "Enter") {
 		calculate();
 	}
-})
+});
 
 inputButton.addEventListener("click", () => {
 	calculate();
-})
+});
 
 function calculate() {
 	const input = getInput();
