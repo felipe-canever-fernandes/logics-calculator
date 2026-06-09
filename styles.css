@@ -38,3 +38,7 @@ main {
 .input math-field {
 	flex-grow: 1;
 }
+
+.input math-field::part(menu-toggle) {
+	display: none;
+}

@@ -1,5 +1,7 @@
 interface HTMLMathFieldElement extends HTMLElement {
 	value: string;
+	menuItems: [];
+
 	getValue(): string;
 }
 

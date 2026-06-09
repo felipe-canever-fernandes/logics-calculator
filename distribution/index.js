@@ -81,6 +81,7 @@ mathVirtualKeyboard.layouts = {
         ],
     ],
 };
+inputField.menuItems = [];
 inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         calculate();
