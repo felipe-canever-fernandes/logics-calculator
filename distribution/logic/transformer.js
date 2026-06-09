@@ -48,4 +48,10 @@ export const transformer = {
         const implicatedYX = transformer.l_implication([y, x]);
         return transformer.conjunction([implicatedXY, implicatedYX]);
     },
+    j_bi_implication([x, y]) {
+        // (x \xrightarrow{J} y) \land (y \xrightarrow{J} x)
+        const jImplicatedXY = transformer.j_implication([x, y]);
+        const jImplicatedYX = transformer.j_implication([y, x]);
+        return transformer.conjunction([jImplicatedXY, jImplicatedYX]);
+    },
 };
