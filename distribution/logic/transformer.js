@@ -57,4 +57,9 @@ export const transformer = {
         const jImplicatedYX = transformer.j_implication([y, x]);
         return transformer.conjunction([jImplicatedXY, jImplicatedYX]);
     },
+    k_bi_implication([x, y]) {
+        const kImplicatedXY = transformer.k_implication([x, y]);
+        const kImplicatedYX = transformer.k_implication([y, x]);
+        return transformer.conjunction([kImplicatedXY, kImplicatedYX]);
+    },
 };

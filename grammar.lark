@@ -12,6 +12,7 @@
 		| k_implication
 		| l_bi_implication
 		| j_bi_implication
+		| k_bi_implication
 
 ?unary	: weak_negation
 		| strong_negation
@@ -38,6 +39,7 @@ j_implication		: expression "\\xrightarrow[J]{}" unary
 k_implication		: expression "\\xrightarrow[K]{}" unary
 l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
+k_bi_implication	: expression "\\xleftrightarrow[K]{}" unary
 
 %import common.NUMBER
 %import common.WS
