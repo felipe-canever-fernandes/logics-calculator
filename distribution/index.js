@@ -2,6 +2,85 @@ import { UnexpectedCharacters } from "./logic/lark.js";
 import { inputField, inputButton } from "./ui/dom.js";
 import { parser } from "./logic/parser.js";
 import { addOutput, clearInput } from "./ui/rendering.js";
+mathVirtualKeyboard.layouts = {
+    rows: [
+        [
+            "0",
+            "1",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "\\neg",
+            "\\sim",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "\\lor",
+            "\\land",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            {
+                label: "[backspace]",
+                width: 1,
+            },
+        ],
+        [
+            "[(]",
+            "[)]",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "\\nabla",
+            "\\Delta",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "\\rightarrow",
+            "\\roundimplies",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            {
+                label: "[separator]",
+                width: 1,
+            },
+        ],
+        [
+            "[left]",
+            "[right]",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "o",
+            "\\sigma",
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            "\\leftrightarrow",
+            {
+                label: "[separator]",
+                width: 1,
+            },
+            {
+                label: "[separator]",
+                width: 0.5,
+            },
+            {
+                label: "[return]",
+                width: 1,
+            },
+        ],
+    ],
+};
 inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         calculate();
