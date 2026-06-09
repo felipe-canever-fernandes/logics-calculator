@@ -76,16 +76,13 @@ mathVirtualKeyboard.layouts = {
 				label: "[separator]",
 				width: 0.5,
 			},
+			"\\xleftrightarrow[G]{}",
 			"\\xleftrightarrow[L]{}",
 			"\\xleftrightarrow[J]{}",
 			"\\xleftrightarrow[K]{}",
 			{
 				label: "[separator]",
 				width: 0.5,
-			},
-			{
-				label: "[separator]",
-				width: 1,
 			},
 			{
 				label: "[return]",

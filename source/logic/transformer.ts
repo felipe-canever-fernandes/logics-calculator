@@ -65,6 +65,12 @@ export const transformer = {
 		return transformer.disjunction([weaklyNegatedX, y]);
 	},
 
+	g_bi_implication([x, y]: [number, number]) {
+		const implicatedXY = transformer.g_implication([x, y]);
+		const implicatedYX = transformer.g_implication([y, x]);
+		return transformer.conjunction([implicatedXY, implicatedYX]);
+	},
+
 	l_bi_implication([x, y]: [number, number]) {
 		const implicatedXY = transformer.l_implication([x, y]);
 		const implicatedYX = transformer.l_implication([y, x]);
