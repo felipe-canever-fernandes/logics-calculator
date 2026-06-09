@@ -85,10 +85,10 @@ mathVirtualKeyboard.layouts = {
 
 inputField.menuItems = [];
 
-inputField.addEventListener("keydown", (event: KeyboardEvent) => {
-	if (event.key === "Enter") {
+inputField.addEventListener('beforeinput', (event) => {
+	if (event.inputType === 'insertLineBreak') {
 		calculate();
-	}
+	};
 });
 
 inputButton.addEventListener("click", () => {
