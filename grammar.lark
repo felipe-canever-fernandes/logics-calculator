@@ -7,6 +7,7 @@
 
 ?binary	: disjunction
 		| conjunction
+		| g_implication
 		| l_implication
 		| j_implication
 		| k_implication
@@ -34,6 +35,7 @@ value			: NUMBER
 
 disjunction			: expression "\\lor" unary
 conjunction			: expression "\\land" unary
+g_implication		: expression "\\xrightarrow[G]{}" unary
 l_implication		: expression "\\xrightarrow[L]{}" unary
 j_implication		: expression "\\xrightarrow[J]{}" unary
 k_implication		: expression "\\xrightarrow[K]{}" unary

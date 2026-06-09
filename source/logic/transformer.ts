@@ -46,6 +46,10 @@ export const transformer = {
 		return transformer.weak_negation([disjoined]);
 	},
 
+	g_implication([x, y]: [number, number]) {
+		return x <= y ? 1 : y;
+	},
+
 	l_implication([x, y]: [number, number]) {
 		return Math.min(1, 1 - x + y);
 	},

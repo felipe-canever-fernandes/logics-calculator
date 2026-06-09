@@ -35,6 +35,9 @@ export const transformer = {
         const disjoined = transformer.disjunction([negatedX, negatedY]);
         return transformer.weak_negation([disjoined]);
     },
+    g_implication([x, y]) {
+        return x <= y ? 1 : y;
+    },
     l_implication([x, y]) {
         return Math.min(1, 1 - x + y);
     },
