@@ -1,5 +1,5 @@
 import { UnexpectedCharacters } from "./logic/lark.js";
-import { inputField, inputButton } from "./ui/dom.js";
+import { inputField } from "./ui/dom.js";
 import { parser } from "./logic/parser.js"
 import { addOutput, clearInput } from "./ui/rendering.js";
 
@@ -89,10 +89,6 @@ inputField.addEventListener('beforeinput', (event) => {
 	if (event.inputType === 'insertLineBreak') {
 		calculate();
 	};
-});
-
-inputButton.addEventListener("click", () => {
-	calculate();
 });
 
 function calculate() {
