@@ -19,11 +19,8 @@ mathVirtualKeyboard.layouts = {
 				width: 0.5,
 			},
 			"\\lor",
+			"\\oplus",
 			"\\land",
-			{
-				label: "[separator]",
-				width: 1,
-			},
 			{
 				label: "[separator]",
 				width: 1,

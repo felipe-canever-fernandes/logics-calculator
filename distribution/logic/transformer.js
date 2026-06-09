@@ -29,6 +29,9 @@ export const transformer = {
     disjunction([x, y]) {
         return Math.max(x, y);
     },
+    l_strong_disjunction([x, y]) {
+        return Math.min(1, x + y - 1);
+    },
     conjunction([x, y]) {
         const negatedX = transformer.weak_negation([x]);
         const negatedY = transformer.weak_negation([y]);
