@@ -12,7 +12,7 @@ mathVirtualKeyboard.layouts = {
 				label: "[separator]",
 				width: 0.5,
 			},
-			"\\neg",
+			"\\lnot",
 			"\\sim",
 			{
 				label: "[separator]",

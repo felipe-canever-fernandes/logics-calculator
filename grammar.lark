@@ -21,7 +21,7 @@
 		| value
 
 weak_negation	: "\\sim" unary
-strong_negation	: "\\neg" unary
+strong_negation	: "\\lnot" unary
 distinction		: "\\nabla" unary
 crisp_truthness	: "\\Delta" unary
 consistency		: "o" unary
