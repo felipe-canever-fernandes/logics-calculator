@@ -7,11 +7,11 @@ export function clearInput() {
 export function addOutput(input: string, result: string) {
 	const latex = `${input}=${result}`;
 
-	const mathDiv = document.createElement("math-div");
-	mathDiv.innerHTML = latex;
-
 	const listItem = document.createElement("li");
-	listItem.appendChild(mathDiv);
+	listItem.innerHTML =
+		`<math-div class="output-input">${input}</math-div>`;
+	listItem.innerHTML +=
+		`<math-div class="output-output">=${result}</math-div>`;
 
 	outputList.appendChild(listItem);
 }

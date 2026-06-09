@@ -19,8 +19,11 @@ main {
 }
 
 .output > li {
-	display: block;
-	margin: 8px;
+	margin: 24px;
+}
+
+.output > li::marker {
+	color: lightgray;
 }
 
 .input-field::part(menu-toggle) {
