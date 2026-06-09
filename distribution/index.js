@@ -41,7 +41,7 @@ mathVirtualKeyboard.layouts = {
                 label: "[separator]",
                 width: 0.5,
             },
-            "\\rightarrow",
+            "\\xrightarrow[L]{}",
             "\\roundimplies",
             {
                 label: "[separator]",

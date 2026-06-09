@@ -31,7 +31,7 @@ value			: NUMBER
 
 disjunction			: expression "\\lor" unary
 conjunction			: expression "\\land" unary
-l_implication		: expression ("\\rightarrow" | "\\to") unary
+l_implication		: expression "\\xrightarrow[L]{}" unary
 j_implication		: expression "\\roundimplies" unary
 l_bi_implication	: expression "\\leftrightarrow" unary
 
