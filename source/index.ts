@@ -49,7 +49,7 @@ mathVirtualKeyboard.layouts = {
 				width: 0.5,
 			},
 			{
-				label: "[separator]",
+				label: "[hide-keyboard]",
 				width: 1,
 			},
 		],
