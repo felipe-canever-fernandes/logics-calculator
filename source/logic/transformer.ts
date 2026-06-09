@@ -50,6 +50,10 @@ export const transformer = {
 		return transformer.weak_negation([disjoined]);
 	},
 
+	l_strong_conjunction([x, y]: [number, number]) {
+		return Math.max(0, x + y - 1);
+	},
+
 	g_implication([x, y]: [number, number]) {
 		return x <= y ? 1 : y;
 	},

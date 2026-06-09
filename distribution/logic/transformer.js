@@ -38,6 +38,9 @@ export const transformer = {
         const disjoined = transformer.disjunction([negatedX, negatedY]);
         return transformer.weak_negation([disjoined]);
     },
+    l_strong_conjunction([x, y]) {
+        return Math.max(0, x + y - 1);
+    },
     g_implication([x, y]) {
         return x <= y ? 1 : y;
     },
