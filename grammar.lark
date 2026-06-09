@@ -33,7 +33,7 @@ disjunction			: expression "\\lor" unary
 conjunction			: expression "\\land" unary
 l_implication		: expression "\\xrightarrow[L]{}" unary
 j_implication		: expression "\\roundimplies" unary
-l_bi_implication	: expression "\\leftrightarrow" unary
+l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
 
 %import common.NUMBER
 %import common.WS
