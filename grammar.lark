@@ -9,6 +9,7 @@
 		| conjunction
 		| l_implication
 		| j_implication
+		| k_implication
 		| l_bi_implication
 		| j_bi_implication
 
@@ -34,6 +35,7 @@ disjunction			: expression "\\lor" unary
 conjunction			: expression "\\land" unary
 l_implication		: expression "\\xrightarrow[L]{}" unary
 j_implication		: expression "\\xrightarrow[J]{}" unary
+k_implication		: expression "\\xrightarrow[K]{}" unary
 l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
 

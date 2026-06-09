@@ -22,6 +22,10 @@ mathVirtualKeyboard.layouts = {
 			"\\land",
 			{
 				label: "[separator]",
+				width: 1,
+			},
+			{
+				label: "[separator]",
 				width: 0.5,
 			},
 			{
@@ -44,6 +48,7 @@ mathVirtualKeyboard.layouts = {
 			},
 			"\\xrightarrow[L]{}",
 			"\\xrightarrow[J]{}",
+			"\\xrightarrow[K]{}",
 			{
 				label: "[separator]",
 				width: 0.5,
@@ -68,6 +73,10 @@ mathVirtualKeyboard.layouts = {
 			},
 			"\\xleftrightarrow[L]{}",
 			"\\xleftrightarrow[J]{}",
+			{
+				label: "[separator]",
+				width: 1,
+			},
 			{
 				label: "[separator]",
 				width: 0.5,

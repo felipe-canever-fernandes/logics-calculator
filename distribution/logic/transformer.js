@@ -43,6 +43,10 @@ export const transformer = {
         const negated = transformer.weak_negation([distinguished]);
         return transformer.disjunction([negated, y]);
     },
+    k_implication([x, y]) {
+        const weaklyNegatedX = transformer.weak_negation([x]);
+        return transformer.disjunction([weaklyNegatedX, y]);
+    },
     l_bi_implication([x, y]) {
         const implicatedXY = transformer.l_implication([x, y]);
         const implicatedYX = transformer.l_implication([y, x]);
