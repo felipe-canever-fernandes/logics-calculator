@@ -1,8 +1,6 @@
-import { UnexpectedCharacters } from "./logic/lark.js";
 import { inputField } from "./ui/dom.js";
-import { parser } from "./logic/parser.js";
-import { addOutput, clearInput } from "./ui/rendering.js";
 import { setUpKeyboard } from "./ui/keyboard.js";
+import { calculate } from "./app/calculation.js";
 setUpKeyboard();
 inputField.addEventListener('beforeinput', (event) => {
     if (event.inputType === 'insertLineBreak') {
@@ -10,29 +8,3 @@ inputField.addEventListener('beforeinput', (event) => {
     }
     ;
 });
-function calculate() {
-    const input = getInput();
-    console.log(input);
-    try {
-        const result = parser.parse(input);
-        addOutput(input, result);
-        clearInput();
-    }
-    catch (error) {
-        if (error instanceof UnexpectedCharacters) {
-            const message = getUnexpectedCharacterMessage(error, input);
-            alert(message);
-        }
-        else {
-            throw error;
-        }
-    }
-}
-function getInput() {
-    return inputField.getValue();
-}
-function getUnexpectedCharacterMessage(error, input) {
-    const errorIndex = error.column - 1;
-    const inputFromError = input.slice(errorIndex);
-    return `Unexpected character starting from "${inputFromError}".`;
-}
