@@ -4,7 +4,7 @@ import { inputField } from "../ui/dom";
 import { addOutput, clearInput } from "../ui/rendering";
 
 export function calculate() {
-	const input = getInput();
+	const input = inputField.getValue();
 	console.log(input);
 
 	try {
@@ -19,10 +19,6 @@ export function calculate() {
 			throw error;
 		}
 	}
-}
-
-function getInput(): string {
-	return inputField.getValue();
 }
 
 function getUnexpectedCharacterMessage(

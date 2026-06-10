@@ -3,7 +3,7 @@ import { parser } from "../logic/parser";
 import { inputField } from "../ui/dom";
 import { addOutput, clearInput } from "../ui/rendering";
 export function calculate() {
-    const input = getInput();
+    const input = inputField.getValue();
     console.log(input);
     try {
         const result = parser.parse(input);
@@ -19,9 +19,6 @@ export function calculate() {
             throw error;
         }
     }
-}
-function getInput() {
-    return inputField.getValue();
 }
 function getUnexpectedCharacterMessage(error, input) {
     const errorIndex = error.column - 1;
