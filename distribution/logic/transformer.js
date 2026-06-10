@@ -24,7 +24,17 @@ export const transformer = {
         return transformer.conjunction([x, negated]);
     },
     value([token]) {
-        return Number(token.value);
+        console.log(token);
+        const value = token.value;
+        switch (value) {
+            case "0":
+            case "1":
+                return Number(value);
+            case "\\frac12":
+            case "\\frac{1}{2}":
+                return 0.5;
+        }
+        throw new Error(`Invalid value ${value}`);
     },
     disjunction([x, y]) {
         return Math.max(x, y);

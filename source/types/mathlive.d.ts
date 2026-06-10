@@ -14,8 +14,10 @@ interface MathliveVirtualKeyboardLayouts {
 }
 
 type MathliveVirtualKeyboardKey = string | {
-	label: string;
+	label?: string;
+	latex?: string;
 	width: number;
+	class?: string;
 }
 
 declare const mathVirtualKeyboard: MathliveVirtualKeyboard;

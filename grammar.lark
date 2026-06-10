@@ -34,7 +34,7 @@ crisp_truthness	: "\\Delta" unary
 consistency		: "o" unary
 contradiction	: "\\sigma" unary
 ?parentheses	: "\\left(" expression "\\right)"
-value			: NUMBER
+value			: VALUE
 
 disjunction				: expression "\\lor" unary
 l_strong_disjunction	: expression "\\oplus" unary
@@ -49,7 +49,10 @@ l_bi_implication		: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication		: expression "\\xleftrightarrow[J]{}" unary
 k_bi_implication		: expression "\\xleftrightarrow[K]{}" unary
 
-%import common.NUMBER
+VALUE	: "0"
+		| "\\frac12" | "\\frac{1}{2}"
+		| "1"
+
 %import common.WS
 
 %ignore WS

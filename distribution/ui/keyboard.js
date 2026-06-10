@@ -4,6 +4,11 @@ export function setUpKeyboard() {
         rows: [
             [
                 "0",
+                {
+                    latex: "\\frac{1}{2}",
+                    width: 1,
+                    class: "small",
+                },
                 "1",
                 {
                     label: "[separator]",
@@ -30,6 +35,10 @@ export function setUpKeyboard() {
             ],
             [
                 "[(]",
+                {
+                    label: "[separator]",
+                    width: 1,
+                },
                 "[)]",
                 {
                     label: "[separator]",
@@ -56,6 +65,10 @@ export function setUpKeyboard() {
             ],
             [
                 "[left]",
+                {
+                    label: "[separator]",
+                    width: 1,
+                },
                 "[right]",
                 {
                     label: "[separator]",
