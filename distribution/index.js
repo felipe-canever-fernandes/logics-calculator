@@ -108,8 +108,6 @@ function calculate() {
             throw error;
         }
     }
-    finally {
-    }
 }
 function getInput() {
     return inputField.getValue();

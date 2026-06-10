@@ -109,8 +109,6 @@ function calculate() {
 		} else {
 			throw error;
 		}
-	} finally {
-
 	}
 }
 
