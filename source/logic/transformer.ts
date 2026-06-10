@@ -63,14 +63,14 @@ export const transformer = {
 	},
 
 	j_implication([x, y]: [number, number]) {
-		const distinguished = transformer.distinction([x]);
-		const negated = transformer.weak_negation([distinguished]);
+		const distinguishedX = transformer.distinction([x]);
+		const negated = transformer.weak_negation([distinguishedX]);
 		return transformer.disjunction([negated, y]);
 	},
 
 	k_implication([x, y]: [number, number]) {
-		const weaklyNegatedX = transformer.weak_negation([x]);
-		return transformer.disjunction([weaklyNegatedX, y]);
+		const negatedX = transformer.weak_negation([x]);
+		return transformer.disjunction([negatedX, y]);
 	},
 
 	g_bi_implication([x, y]: [number, number]) {

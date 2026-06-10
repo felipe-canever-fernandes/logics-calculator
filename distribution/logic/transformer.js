@@ -48,13 +48,13 @@ export const transformer = {
         return Math.min(1, 1 - x + y);
     },
     j_implication([x, y]) {
-        const distinguished = transformer.distinction([x]);
-        const negated = transformer.weak_negation([distinguished]);
+        const distinguishedX = transformer.distinction([x]);
+        const negated = transformer.weak_negation([distinguishedX]);
         return transformer.disjunction([negated, y]);
     },
     k_implication([x, y]) {
-        const weaklyNegatedX = transformer.weak_negation([x]);
-        return transformer.disjunction([weaklyNegatedX, y]);
+        const negatedX = transformer.weak_negation([x]);
+        return transformer.disjunction([negatedX, y]);
     },
     g_bi_implication([x, y]) {
         const implicatedXY = transformer.g_implication([x, y]);
