@@ -114,7 +114,7 @@ function calculate() {
 	}
 }
 
-function getInput() {
+function getInput(): string {
 	return inputField.getValue();
 }
 
