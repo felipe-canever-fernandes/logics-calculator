@@ -1,4 +1,4 @@
-import { inputField } from "./dom";
+import { inputField } from "./dom.js";
 export function setUpKeyboard() {
     mathVirtualKeyboard.layouts = {
         rows: [

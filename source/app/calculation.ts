@@ -1,7 +1,7 @@
-import { UnexpectedCharacters } from "../logic/lark";
-import { parser } from "../logic/parser";
-import { inputField } from "../ui/dom";
-import { addOutput, clearInput } from "../ui/rendering";
+import { UnexpectedCharacters } from "../logic/lark.js";
+import { parser } from "../logic/parser.js";
+import { inputField } from "../ui/dom.js";
+import { addOutput, clearInput } from "../ui/rendering.js";
 
 export function calculate() {
 	const input = inputField.getValue();
