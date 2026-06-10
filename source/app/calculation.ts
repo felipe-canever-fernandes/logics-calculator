@@ -8,8 +8,9 @@ export function calculate() {
 	console.log(input);
 
 	try {
-		const result = parser.parse(input);
+		const result: number = parser.parse(input);
 		addOutput(input, result);
+
 		clearInput();
 	} catch (error: unknown) {
 		if (error instanceof UnexpectedCharacters) {
