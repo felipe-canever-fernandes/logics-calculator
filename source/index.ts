@@ -4,7 +4,7 @@ import { calculate } from "./app/calculation.js";
 
 setUpKeyboard();
 
-inputField.addEventListener('beforeinput', (event) => {
+inputField.addEventListener('beforeinput', (event: InputEvent) => {
 	if (event.inputType === 'insertLineBreak') {
 		calculate();
 	};
