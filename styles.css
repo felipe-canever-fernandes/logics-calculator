@@ -1,13 +1,21 @@
 /* Debug */
 /* * {
-	outline: gray dashed 1px;
+	outline: lightgray dashed 1px;
 } */
+
+*, ::before, ::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
 body {
 	height: 100vh;
+	padding: 64px;
 
 	display: flex;
 	flex-direction: column;
+	gap: 16px;
 }
 
 main {
@@ -15,15 +23,57 @@ main {
 
 	display: flex;
 	flex-direction: column;
+	gap: 32px;
+}
+
+.output {
+	flex-grow: 1;
+
+	list-style: none;
+	counter-reset: item;
+
+	display: flex;
+	flex-direction: column;
 	justify-content: flex-end;
+	gap: 16px;
+}
+
+.output > li::before {
+	content: counter(item);
+	text-align: right;
+	color: lightgray;
 }
 
 .output > li {
-	margin: 24px;
+	counter-increment: item;
+
+	border: lightgray solid 1px;
+	border-radius: 4px;
+	padding: 8px;
+
+	display: grid;
+	grid-template-columns: 24px 1fr;
+	gap: 32px;
+	align-items: center;
 }
 
-.output > li::marker {
-	color: lightgray;
+.output > li > div {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.output > li > div > div {
+	display: flex;
+	gap: 0.5em;
+}
+
+.output-symbol {
+	color: gray;
+}
+
+.output-result {
+	font-weight: bold;
 }
 
 .input-field::part(menu-toggle) {

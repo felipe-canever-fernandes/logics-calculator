@@ -8,11 +8,14 @@ export function addOutput(input: string, result: number) {
 	const output = convertNumberToLatex(result);
 
 	const listItem = document.createElement("li");
-	listItem.innerHTML =
-		`<math-div class="output-input">${input}</math-div>`;
-	listItem.innerHTML +=
-		`<math-div class="output-output">=${output}</math-div>`;
 
+	const div = document.createElement("div");
+	div.innerHTML =
+		`<math-div class="output-input">${input}</math-div>`;
+	div.innerHTML +=
+		`<div><math-div class="output-symbol">=</math-div><math-div class="output-result">${output}</math-div></div>`;
+
+	listItem.appendChild(div);
 	outputList.appendChild(listItem);
 }
 
