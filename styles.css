@@ -3,6 +3,38 @@
 	outline: lightgray dashed 1px;
 } */
 
+@font-face {
+  font-family: "CMU Serif";
+  src: url("./font/cmu/cmunrm.woff") format("woff"),
+       url("./font/cmu/cmunrm.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CMU Serif";
+  src: url("./font/cmu/cmunti.woff") format("woff"),
+       url("./font/cmu/cmunti.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CMU Serif";
+  src: url("./font/cmu/cmunbx.woff") format("woff"),
+       url("./font/cmu/cmunbx.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CMU Serif";
+  src: url("./font/cmu/cmunbi.woff") format("woff"),
+       url("./font/cmu/cmunbi.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
 *, ::before, ::after {
 	box-sizing: border-box;
 	margin: 0;
@@ -12,6 +44,7 @@
 body {
 	height: 100vh;
 	padding: 64px;
+	font-family: "CMU Serif", serif;
 
 	display: flex;
 	flex-direction: column;
