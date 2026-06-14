@@ -1,6 +1,4 @@
-import { Token } from "../lark.js";
-
-type Element = Token | string;
+import { Element } from "./element.js";
 
 export const printer = {
 	disjunction(elements: Element[]): string {
