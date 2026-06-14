@@ -1,5 +1,9 @@
 import { inputField } from "./dom.js";
 export function setUpKeyboard() {
+    const separator = {
+        label: "[separator]",
+        width: 0.5,
+    };
     mathVirtualKeyboard.layouts = {
         rows: [
             [
@@ -10,23 +14,10 @@ export function setUpKeyboard() {
                     class: "small",
                 },
                 "1",
+                separator,
                 {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "\\lnot",
-                "\\sim",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "\\lor",
-                "\\oplus",
-                "\\land",
-                "\\otimes",
-                {
-                    label: "[separator]",
-                    width: 0.5,
+                    label: "[hide-keyboard]",
+                    width: 1,
                 },
                 {
                     label: "[backspace]",
@@ -34,63 +25,21 @@ export function setUpKeyboard() {
                 },
             ],
             [
+                "\\sim",
                 "[(]",
-                {
-                    label: "[separator]",
-                    width: 1,
-                },
                 "[)]",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "\\nabla",
-                "\\Delta",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "\\xrightarrow[G]{}",
-                "\\xrightarrow[L]{}",
-                "\\xrightarrow[J]{}",
-                "\\xrightarrow[K]{}",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                {
-                    label: "[hide-keyboard]",
-                    width: 1,
-                },
+                separator,
+                "[left]",
+                "[right]",
             ],
             [
-                "[left]",
-                {
-                    label: "[separator]",
-                    width: 1,
-                },
-                "[right]",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "o",
-                "\\sigma",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
-                "\\xleftrightarrow[G]{}",
-                "\\xleftrightarrow[L]{}",
-                "\\xleftrightarrow[J]{}",
-                "\\xleftrightarrow[K]{}",
-                {
-                    label: "[separator]",
-                    width: 0.5,
-                },
+                "\\rightarrow",
+                "\\lor",
+                "\\land",
+                separator,
                 {
                     label: "[return]",
-                    width: 1,
+                    width: 2,
                 },
             ],
         ],
