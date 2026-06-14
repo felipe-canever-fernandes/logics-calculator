@@ -11,15 +11,19 @@
 
 ?unary	: negation
 		| parentheses
+		| variable
 		| value
 
 negation		: "\\sim" unary
 ?parentheses	: "\\left(" expression "\\right)"
+variable		: VARIABLE
 value			: VALUE
 
 disjunction	: expression "\\lor" unary
 conjunction	: expression "\\land" unary
 implication	: expression "\\rightarrow" unary
+
+VARIABLE : "p"
 
 VALUE	: "0"
 		| "\\frac12" | "\\frac{1}{2}"

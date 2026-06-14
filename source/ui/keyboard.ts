@@ -27,9 +27,9 @@ export function setUpKeyboard() {
 				},
 			],
 			[
+				"p",
 				"\\sim",
-				"[(]",
-				"[)]",
+				"\\left(#@\\right)",
 				separator,
 				"[left]",
 				"[right]",
