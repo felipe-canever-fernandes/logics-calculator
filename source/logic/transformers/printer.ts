@@ -1,4 +1,4 @@
-import { Token } from "./lark.js";
+import { Token } from "../lark.js";
 
 type Element = Token | string;
 
