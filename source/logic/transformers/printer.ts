@@ -1,8 +1,12 @@
 import { Token, Transformer } from "../lark.js";
 
-type Element = Token | string;
+type Element = Token | string | number;
 
 export class Printer extends Transformer {
+	start([result]: [string]): string {
+		return result;
+	}
+
 	disjunction(elements: Element[]): string {
 		return Printer.getRepresentation(elements);
 	}
@@ -33,7 +37,18 @@ export class Printer extends Transformer {
 
 	static getRepresentation(elements: Element[]): string {
 		return elements
-			.map(e => typeof e === "string" ? e : e.value)
+			.map((e) => {
+				switch (typeof e) {
+					case "number":
+						return String(e);
+					
+					case "string":
+						return e;
+					
+					default:
+						return e.value;
+				}
+			})
 			.join(" ");
 	}
 };

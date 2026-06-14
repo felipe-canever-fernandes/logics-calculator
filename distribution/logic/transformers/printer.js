@@ -1,5 +1,8 @@
 import { Transformer } from "../lark.js";
 export class Printer extends Transformer {
+    start([result]) {
+        return result;
+    }
     disjunction(elements) {
         return Printer.getRepresentation(elements);
     }
@@ -23,7 +26,16 @@ export class Printer extends Transformer {
     }
     static getRepresentation(elements) {
         return elements
-            .map(e => typeof e === "string" ? e : e.value)
+            .map((e) => {
+            switch (typeof e) {
+                case "number":
+                    return String(e);
+                case "string":
+                    return e;
+                default:
+                    return e.value;
+            }
+        })
             .join(" ");
     }
 }

@@ -1,10 +1,13 @@
 import { get_parser, Tree, UnexpectedCharacters } from "../logic/lark.js";
+import { ConstantFolder } from "../logic/transformers/constant-folder.js";
 import { Printer } from "../logic/transformers/printer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
 
 const parser = get_parser();
+
 const printer = new Printer();
+const constantFolder = new ConstantFolder();
 
 export function calculate() {
 	const input = inputField.getValue();
@@ -13,10 +16,11 @@ export function calculate() {
 	try {
 		clearInput();
 
-		const tree: Tree = parser.parse(input);
+		let tree: Tree = parser.parse(input);
 
-		for (const transformer of [printer]) {
-			const result: number = transformer.transform(tree);
+		for (const transformer of [constantFolder]) {
+			tree = transformer.transform(tree);
+			const result: string = printer.transform(tree);
 			addOutput(input, result);
 		}
 	} catch (error: unknown) {
