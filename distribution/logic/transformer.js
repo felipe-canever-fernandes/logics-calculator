@@ -1,30 +1,20 @@
 export const transformer = {
-    negation([x]) {
-        return 1 - x;
+    disjunction(x) {
+        return x;
     },
-    value([token]) {
-        console.log(token);
-        const value = token.value;
-        switch (value) {
-            case "0":
-            case "1":
-                return Number(value);
-            case "\\frac12":
-            case "\\frac{1}{2}":
-                return 0.5;
-        }
-        throw new Error(`Invalid value ${value}`);
+    conjunction(x) {
+        return x;
     },
-    disjunction([x, y]) {
-        return Math.max(x, y);
+    implication(x) {
+        return x;
     },
-    conjunction([x, y]) {
-        const negatedX = transformer.negation([x]);
-        const negatedY = transformer.negation([y]);
-        const disjoined = transformer.disjunction([negatedX, negatedY]);
-        return transformer.negation([disjoined]);
+    negation(x) {
+        return x;
     },
-    implication([x, y]) {
-        return Math.min(1, 1 - x + y);
+    variable(x) {
+        return x;
+    },
+    value(x) {
+        return x;
     },
 };

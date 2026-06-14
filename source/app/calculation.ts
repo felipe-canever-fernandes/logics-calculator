@@ -9,6 +9,7 @@ export function calculate() {
 
 	try {
 		const result: number = parser.parse(input);
+		console.log(result);
 		addOutput(input, result);
 
 		clearInput();

@@ -14,20 +14,25 @@
 		| variable
 		| value
 
-negation		: "\\sim" unary
-?parentheses	: "\\left(" expression "\\right)"
-variable		: VARIABLE
-value			: VALUE
+disjunction	: expression DISJUNCTION unary
+conjunction	: expression CONJUNCTION unary
+implication	: expression IMPLICATION unary
 
-disjunction	: expression "\\lor" unary
-conjunction	: expression "\\land" unary
-implication	: expression "\\rightarrow" unary
+negation	: NEGATION unary
+parentheses	: LEFT_PARENTHESIS expression RIGHT_PARENTHESIS
+variable	: VARIABLE
+value		: VALUE
 
-VARIABLE : "p"
-
-VALUE	: "0"
-		| "\\frac12" | "\\frac{1}{2}"
-		| "1"
+DISJUNCTION			: "\\lor"
+CONJUNCTION 		: "\\land"
+IMPLICATION 		: "\\rightarrow"
+NEGATION			: "\\sim"
+LEFT_PARENTHESIS	: "\\left("
+RIGHT_PARENTHESIS	: "\\right)"
+VARIABLE			: "p"
+VALUE				: "0"
+					| "\\frac12" | "\\frac{1}{2}"
+					| "1"
 
 %import common.WS
 

@@ -7,6 +7,7 @@ export function calculate() {
     console.log(input);
     try {
         const result = parser.parse(input);
+        console.log(result);
         addOutput(input, result);
         clearInput();
     }

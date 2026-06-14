@@ -1,4 +1,4 @@
 import { get_parser } from "./lark.js";
-import { transformer } from "./transformer.js";
+import { printer } from "./printer.js";
 
-export const parser = get_parser({ transformer });
+export const parser = get_parser({ transformer: printer });
