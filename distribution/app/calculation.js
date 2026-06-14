@@ -1,15 +1,19 @@
-import { UnexpectedCharacters } from "../logic/lark.js";
-import { parser } from "../logic/parser.js";
+import { get_parser, UnexpectedCharacters } from "../logic/lark.js";
+import { Printer } from "../logic/transformers/printer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
+const parser = get_parser();
+const printer = new Printer();
 export function calculate() {
     const input = inputField.getValue();
     console.log(input);
     try {
-        const result = parser.parse(input);
-        console.log(result);
-        addOutput(input, result);
         clearInput();
+        const tree = parser.parse(input);
+        for (const transformer of [printer]) {
+            const result = transformer.transform(tree);
+            addOutput(input, result);
+        }
     }
     catch (error) {
         if (error instanceof UnexpectedCharacters) {
