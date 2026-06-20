@@ -1,5 +1,6 @@
 import { get_parser, Tree, UnexpectedCharacters } from "../logic/lark.js";
 import { ConstantFolder } from "../logic/transformers/constant-folder.js";
+import { Flattener } from "../logic/transformers/flattener.js";
 import { Printer } from "../logic/transformers/printer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
@@ -7,6 +8,7 @@ import { addOutput, clearInput } from "../ui/rendering.js";
 const parser = get_parser();
 
 const printer = new Printer();
+const flattener = new Flattener();
 const constantFolder = new ConstantFolder();
 
 export function calculate() {
@@ -17,12 +19,14 @@ export function calculate() {
 		clearInput();
 
 		let tree: Tree = parser.parse(input);
+		console.log(tree.pretty());
 
-		for (const transformer of [constantFolder]) {
+		for (const transformer of [flattener, constantFolder]) {
 			tree = transformer.transform(tree);
-			const result: string = printer.transform(tree);
-			addOutput(input, result);
 		}
+
+		const result: string = printer.transform(tree);
+		addOutput(input, result);
 	} catch (error: unknown) {
 		if (error instanceof UnexpectedCharacters) {
 			const message = getUnexpectedCharacterMessage(error, input);

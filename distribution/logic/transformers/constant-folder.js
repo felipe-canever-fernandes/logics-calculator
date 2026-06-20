@@ -1,21 +1,12 @@
-import { Transformer, Tree } from "../lark.js";
+import { Token, Transformer, Tree } from "../lark.js";
 export class ConstantFolder extends Transformer {
-    disjunction([a, symbol, b]) {
-        console.log(a, symbol, b);
-        if (typeof a === "number" && typeof b === "number") {
-            return Math.max(a, b);
-        }
-        return new Tree("disjunction", [a, symbol, b]);
+    disjunction(children) {
+        return ConstantFolder.binaryOperator(children, "disjunction", Math.max);
     }
-    conjunction([a, symbol, b]) {
-        console.log(a, symbol, b);
-        if (typeof a === "number" && typeof b === "number") {
-            return Math.min(a, b);
-        }
-        return new Tree("conjunction", [a, symbol, b]);
+    conjunction(children) {
+        return ConstantFolder.binaryOperator(children, "conjunction", Math.min);
     }
     implication([a, symbol, b]) {
-        console.log(a, symbol, b);
         if (typeof a === "number" && typeof b === "number") {
             return Math.min(1, 1 - a + b);
         }
@@ -37,6 +28,22 @@ export class ConstantFolder extends Transformer {
         const value = token.value;
         const number = Number(value);
         return number;
+    }
+    static binaryOperator(children, operation, operate) {
+        const numbers = children.filter(e => typeof e === "number");
+        if (numbers.length === 0) {
+            return new Tree(operation, children);
+        }
+        const trees = children.filter(e => e instanceof Tree);
+        const result = operate(...numbers);
+        if (trees.length === 0) {
+            return result;
+        }
+        const symbol = children.find(e => e instanceof Token);
+        let simplified = [];
+        simplified = [...trees, result]
+            .reduce((list, e, i) => i === 0 ? [e] : [...list, symbol, e], simplified);
+        return new Tree(operation, simplified);
     }
 }
 ;
