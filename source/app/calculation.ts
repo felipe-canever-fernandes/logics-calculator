@@ -8,7 +8,7 @@ export function calculate() {
 	console.log(input);
 
 	try {
-		const result: number = parser.parse(input);
+		const result = parser.parse(input);
 		addOutput(input, result);
 
 		clearInput();

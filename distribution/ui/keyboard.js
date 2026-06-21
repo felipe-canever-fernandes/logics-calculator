@@ -35,10 +35,7 @@ export function setUpKeyboard() {
             ],
             [
                 "[(]",
-                {
-                    label: "[separator]",
-                    width: 1,
-                },
+                "p",
                 "[)]",
                 {
                     label: "[separator]",
@@ -65,10 +62,7 @@ export function setUpKeyboard() {
             ],
             [
                 "[left]",
-                {
-                    label: "[separator]",
-                    width: 1,
-                },
+                "q",
                 "[right]",
                 {
                     label: "[separator]",

@@ -25,6 +25,7 @@
 		| consistency
 		| contradiction
 		| parentheses
+		| variable
 		| value
 
 weak_negation	: "\\sim" unary
@@ -34,6 +35,7 @@ crisp_truthness	: "\\Delta" unary
 consistency		: "o" unary
 contradiction	: "\\sigma" unary
 ?parentheses	: "\\left(" expression "\\right)"
+variable		: VARIABLE
 value			: VALUE
 
 disjunction				: expression "\\lor" unary
@@ -48,6 +50,8 @@ g_bi_implication		: expression "\\xleftrightarrow[G]{}" unary
 l_bi_implication		: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication		: expression "\\xleftrightarrow[J]{}" unary
 k_bi_implication		: expression "\\xleftrightarrow[K]{}" unary
+
+VARIABLE	: /[pq]/
 
 VALUE	: "0"
 		| "\\frac12" | "\\frac{1}{2}"
