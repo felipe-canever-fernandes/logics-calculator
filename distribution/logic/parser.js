@@ -1,3 +1,4 @@
 import { get_parser } from "./lark.js";
-import { transformer } from "./transformer.js";
+import { LogicTransformer } from "./transformer.js";
+const transformer = new LogicTransformer();
 export const parser = get_parser({ transformer });

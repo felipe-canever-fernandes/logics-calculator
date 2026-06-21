@@ -17,6 +17,7 @@ export function setUpKeyboard() {
 				},
 				"\\lnot",
 				"\\sim",
+				"p",
 				{
 					label: "[separator]",
 					width: 0.5,
@@ -36,7 +37,10 @@ export function setUpKeyboard() {
 			],
 			[
 				"[(]",
-				"p",
+				{
+					label: "[separator]",
+					width: 1,
+				},
 				"[)]",
 				{
 					label: "[separator]",
@@ -44,6 +48,7 @@ export function setUpKeyboard() {
 				},
 				"\\nabla",
 				"\\Delta",
+				"q",
 				{
 					label: "[separator]",
 					width: 0.5,
@@ -63,7 +68,10 @@ export function setUpKeyboard() {
 			],
 			[
 				"[left]",
-				"q",
+				{
+					label: "[separator]",
+					width: 1,
+				},
 				"[right]",
 				{
 					label: "[separator]",
@@ -71,6 +79,7 @@ export function setUpKeyboard() {
 				},
 				"o",
 				"\\sigma",
+				"?",
 				{
 					label: "[separator]",
 					width: 0.5,

@@ -1,11 +1,12 @@
+import { Result, Validity } from "../logic/transformer.js";
 import { inputField, outputList } from "./dom.js";
 
 export function clearInput() {
 	inputField.value = "";
 }
 
-export function addOutput(input: string, result: number) {
-	const output = convertNumberToLatex(result);
+export function addOutput(input: string, result: Result) {
+	const output = convertToOutput(result);
 
 	const listItem = document.createElement("li");
 
@@ -13,16 +14,28 @@ export function addOutput(input: string, result: number) {
 	div.innerHTML =
 		`<math-div class="output-input">${input}</math-div>`;
 	div.innerHTML +=
-		`<div><math-div class="output-symbol">=</math-div><math-div class="output-result">${output}</math-div></div>`;
+		`<div><math-div class="output-symbol">=</math-div><div class="output-result">${output}</div></div>`;
 
 	listItem.appendChild(div);
 	outputList.appendChild(listItem);
 }
 
-function convertNumberToLatex(value: number): string {
-	if (value === 0.5) {
-		return "\\frac{1}{2}";
+function convertToOutput(result: Result): string {
+	if (typeof result === "number") {
+		const latex = result === 0.5
+			? "\\frac{1}{2}"
+			: String(result);
+
+		return `<math-div>${latex}</math-div>`;
 	}
 
-	return String(value);
+	if (typeof result === "string") {
+		if (Object.values(Validity).includes(result)) {
+			return result;
+		}
+
+		throw new Error("unknown validity");
+	}
+
+	throw new Error("invalid result");
 }

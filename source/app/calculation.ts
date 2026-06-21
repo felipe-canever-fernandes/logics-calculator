@@ -1,5 +1,6 @@
 import { UnexpectedCharacters } from "../logic/lark.js";
 import { parser } from "../logic/parser.js";
+import { Result } from "../logic/transformer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
 
@@ -8,7 +9,8 @@ export function calculate() {
 	console.log(input);
 
 	try {
-		const result = parser.parse(input);
+		const result: Result = parser.parse(input);
+		console.log(result);
 		addOutput(input, result);
 
 		clearInput();

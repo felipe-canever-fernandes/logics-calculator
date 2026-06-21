@@ -1,4 +1,7 @@
 ?start	: expression
+		| query
+
+query	: expression "?"
 
 ?expression	: operation
 
