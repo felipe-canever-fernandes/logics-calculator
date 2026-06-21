@@ -29,13 +29,15 @@ export class LogicTransformer extends Transformer {
 		const zeroCount = count(results, 0);
 		if (zeroCount === totalCount) {
 			return Validity.CONTRADICTION;
-		} else if (zeroCount === 0) {
-			return Validity.PARACONSISTENT_TAUTOLOGY;
 		}
 
 		const oneCount = count(results, 1);
 		if (oneCount === totalCount) {
 			return Validity.CONSISTENT_TAUTOLOGY;
+		}
+
+		if (zeroCount === 0) {
+			return Validity.PARACONSISTENT_TAUTOLOGY;
 		}
 
 		return Validity.CONTINGENCY;
