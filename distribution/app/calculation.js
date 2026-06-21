@@ -17,7 +17,7 @@ export function calculate() {
         if (error instanceof UnexpectedCharacters
             ||
                 error instanceof UnexpectedToken) {
-            const message = getUnexpectedCharacterMessage(error, input);
+            const message = getUnexpectedMessage(error, input);
             alert(message);
         }
         else {
@@ -25,9 +25,10 @@ export function calculate() {
         }
     }
 }
-function getUnexpectedCharacterMessage(error, input) {
-    const type = error instanceof UnexpectedCharacters ? "characters" : "token";
+function getUnexpectedMessage(error, input) {
+    const type = error instanceof UnexpectedCharacters ? "character" : "token";
     const errorIndex = error.column - 1;
+    const inputBeforeError = input.slice(0, errorIndex);
     const inputFromError = input.slice(errorIndex);
-    return `Unexpected ${type} starting from "${inputFromError}".`;
+    return `Unexpected ${type}: ${inputBeforeError}>>>${inputFromError}.`;
 }

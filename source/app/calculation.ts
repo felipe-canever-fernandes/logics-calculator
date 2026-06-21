@@ -23,7 +23,7 @@ export function calculate() {
 			||
 			error instanceof UnexpectedToken
 		) {
-			const message = getUnexpectedCharacterMessage(error, input);
+			const message = getUnexpectedMessage(error, input);
 			alert(message);
 		} else {
 			throw error;
@@ -31,12 +31,15 @@ export function calculate() {
 	}
 }
 
-function getUnexpectedCharacterMessage(
+function getUnexpectedMessage(
 	error: UnexpectedCharacters | UnexpectedToken,
 	input: string,
 ): string {
-	const type = error instanceof UnexpectedCharacters ? "characters" : "token";
+	const type = error instanceof UnexpectedCharacters ? "character" : "token";
+
 	const errorIndex = error.column - 1;
+	const inputBeforeError = input.slice(0, errorIndex);
 	const inputFromError = input.slice(errorIndex);
-	return `Unexpected ${type} starting from "${inputFromError}".`;
+
+	return `Unexpected ${type}: ${inputBeforeError}>>>${inputFromError}.`;
 }
