@@ -54,7 +54,7 @@ l_bi_implication		: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication		: expression "\\xleftrightarrow[J]{}" unary
 k_bi_implication		: expression "\\xleftrightarrow[K]{}" unary
 
-VARIABLE	: /[pq]/
+VARIABLE	: /[a-z]/
 
 VALUE	: "0"
 		| "\\frac12" | "\\frac{1}{2}"

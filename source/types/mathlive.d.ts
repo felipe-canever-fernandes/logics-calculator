@@ -6,10 +6,11 @@ interface HTMLMathFieldElement extends HTMLElement {
 }
 
 interface MathliveVirtualKeyboard {
-	layouts: MathliveVirtualKeyboardLayouts;
+	layouts: MathliveVirtualKeyboardLayout[];
 }
 
-interface MathliveVirtualKeyboardLayouts {
+interface MathliveVirtualKeyboardLayout {
+	label: string;
 	rows: MathliveVirtualKeyboardKey[][];
 }
 
