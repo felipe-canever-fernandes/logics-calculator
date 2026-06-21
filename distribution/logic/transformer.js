@@ -5,7 +5,8 @@ export var Validity;
 (function (Validity) {
     Validity["CONTRADICTION"] = "contradiction";
     Validity["CONTINGENCY"] = "contingency";
-    Validity["TAUTOLOGY"] = "tautology";
+    Validity["PARACONSISTENT_TAUTOLOGY"] = "paraconsistent tautology";
+    Validity["CONSISTENT_TAUTOLOGY"] = "consistent tautology";
 })(Validity || (Validity = {}));
 export class LogicTransformer extends Transformer {
     constructor() {
@@ -25,9 +26,12 @@ export class LogicTransformer extends Transformer {
             if (zeroCount === totalCount) {
                 return Validity.CONTRADICTION;
             }
+            else if (zeroCount === 0) {
+                return Validity.PARACONSISTENT_TAUTOLOGY;
+            }
             const oneCount = count(results, 1);
             if (oneCount === totalCount) {
-                return Validity.TAUTOLOGY;
+                return Validity.CONSISTENT_TAUTOLOGY;
             }
             return Validity.CONTINGENCY;
         };
