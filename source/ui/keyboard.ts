@@ -77,7 +77,7 @@ export function setUpKeyboard() {
 					label: "[separator]",
 					width: 0.5,
 				},
-				"o",
+				"\\circ",
 				"\\sigma",
 				"?",
 				{

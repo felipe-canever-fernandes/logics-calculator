@@ -35,7 +35,7 @@ weak_negation	: "\\sim" unary
 strong_negation	: "\\lnot" unary
 distinction		: "\\nabla" unary
 crisp_truthness	: "\\Delta" unary
-consistency		: "o" unary
+consistency		: "\\circ" unary
 contradiction	: "\\sigma" unary
 ?parentheses	: "\\left(" expression "\\right)"
 variable		: VARIABLE
