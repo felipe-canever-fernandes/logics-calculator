@@ -1,4 +1,5 @@
 import { Token, Transformer, Tree } from "./lark.js";
+import { Substitutor } from "./substitutor.js";
 import { VariableCollector } from "./variable-collector.js";
 
 type Expression = Tree | number;
@@ -12,25 +13,26 @@ export enum Validity {
 }
 
 export class LogicTransformer extends Transformer {
-	substitutions = new Map<string, number>();
-
 	query = ([expression]: [Expression]): Validity => {
-		const values: number[] = [];
+		let results: number[] = [];
 
 		if (typeof expression === "number") {
-			values.push(expression);
+			results.push(expression);
 		} else {
-			throw new Error("algebraic validation not supported");
+			const variables = this.collectVariables(expression);
+			console.log(variables);
+
+			results = this.getResults(expression, variables);
 		}
 
-		const totalCount = values.length;
+		const totalCount = results.length;
 
-		const zeroCount = count(values, 0);
+		const zeroCount = count(results, 0);
 		if (zeroCount === totalCount) {
 			return Validity.CONTRADICTION;
 		}
 
-		const oneCount = count(values, 1);
+		const oneCount = count(results, 1);
 		if (oneCount === totalCount) {
 			return Validity.TAUTOLOGY;
 		}
@@ -98,6 +100,7 @@ export class LogicTransformer extends Transformer {
 		switch (value) {
 			case "0":
 			case "1":
+			case "0.5":
 				return Number(value);
 
 			case "\\frac12":
@@ -217,6 +220,56 @@ export class LogicTransformer extends Transformer {
 		const kImplicatedYX = this.k_implication([y, x]);
 		return this.conjunction([kImplicatedXY, kImplicatedYX]);
 	};
+
+	collectVariables = (expression: Expression): string[] => {
+		const collector = new VariableCollector();
+		collector.transform(expression);
+		const variables = [...collector.variables];
+		return variables;
+	};
+
+	getResults = (expression: Expression, variables: string[]): number[] => {
+		const values = [0, 0.5, 1];
+
+		const counters = this.createCounters(variables, values);
+		const firstCounter = counters[0];
+		const lastCounter = counters[variables.length - 1];
+
+		const results = [] as number[];
+		while (!firstCounter.getHasFinishedLap()) {
+			const variableValues = counters.map((counter) => counter.get());
+			const substitutions = new Map<string, number>([...variableValues]);
+			const substitutor = new Substitutor(substitutions);
+			const tree: Tree = substitutor.transform(expression);
+
+			const result: Expression = this.transform(tree);
+			if (typeof result !== "number") {
+				throw new Error("could not calculate result for validity");
+			}
+
+			results.push(result);
+
+			lastCounter.increment();
+		}
+
+		return results;
+	};
+
+	createCounters = (variables: string[], values: number[]): Counter[] => {
+		const counters: Counter[] = [];
+
+		for (let i = 0; i < variables.length; ++i) {
+			const callback: () => void = i === 0
+				? () => { }
+				: () => { counters[i - 1].increment(); }
+
+			const variable = variables[i];
+			const counter = new Counter(variable, values, callback);
+			counters.push(counter);
+		}
+
+		return counters;
+	};
 };
 
 function count<T>(array: T[], value: T): number {
@@ -227,4 +280,53 @@ function count<T>(array: T[], value: T): number {
 
 		return count;
 	}, 0);
+}
+
+class Counter {
+	private variable: string = "";
+
+	private values: number[] = [];
+	private count: number = 0;
+
+	private i: number = 0;
+	private hasFinishedLap: boolean = false;
+
+	private callback: () => void = () => { };
+
+	public constructor(
+		variable: string,
+		values: number[],
+		callback: () => void,
+	) {
+		this.variable = variable;
+
+		this.values = values;
+		this.count = values.length;
+
+		this.callback = callback;
+	}
+
+	public get(): [string, number] {
+		const value = this.values[this.i];
+
+		return [
+			this.variable,
+			value,
+		];
+	}
+
+	public increment() {
+		++this.i;
+
+		if (this.i === this.count) {
+			this.i = 0;
+			this.hasFinishedLap = true;
+
+			this.callback();
+		}
+	}
+
+	public getHasFinishedLap(): boolean {
+		return this.hasFinishedLap;
+	}
 }

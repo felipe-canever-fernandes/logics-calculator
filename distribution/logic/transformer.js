@@ -1,4 +1,6 @@
 import { Transformer, Tree } from "./lark.js";
+import { Substitutor } from "./substitutor.js";
+import { VariableCollector } from "./variable-collector.js";
 export var Validity;
 (function (Validity) {
     Validity["CONTRADICTION"] = "contradiction";
@@ -8,21 +10,22 @@ export var Validity;
 export class LogicTransformer extends Transformer {
     constructor() {
         super(...arguments);
-        this.substitutions = new Map();
         this.query = ([expression]) => {
-            const values = [];
+            let results = [];
             if (typeof expression === "number") {
-                values.push(expression);
+                results.push(expression);
             }
             else {
-                throw new Error("algebraic validation not supported");
+                const variables = this.collectVariables(expression);
+                console.log(variables);
+                results = this.getResults(expression, variables);
             }
-            const totalCount = values.length;
-            const zeroCount = count(values, 0);
+            const totalCount = results.length;
+            const zeroCount = count(results, 0);
             if (zeroCount === totalCount) {
                 return Validity.CONTRADICTION;
             }
-            const oneCount = count(values, 1);
+            const oneCount = count(results, 1);
             if (oneCount === totalCount) {
                 return Validity.TAUTOLOGY;
             }
@@ -75,6 +78,7 @@ export class LogicTransformer extends Transformer {
             switch (value) {
                 case "0":
                 case "1":
+                case "0.5":
                     return Number(value);
                 case "\\frac12":
                 case "\\frac{1}{2}":
@@ -168,6 +172,44 @@ export class LogicTransformer extends Transformer {
             const kImplicatedYX = this.k_implication([y, x]);
             return this.conjunction([kImplicatedXY, kImplicatedYX]);
         };
+        this.collectVariables = (expression) => {
+            const collector = new VariableCollector();
+            collector.transform(expression);
+            const variables = [...collector.variables];
+            return variables;
+        };
+        this.getResults = (expression, variables) => {
+            const values = [0, 0.5, 1];
+            const counters = this.createCounters(variables, values);
+            const firstCounter = counters[0];
+            const lastCounter = counters[variables.length - 1];
+            const results = [];
+            while (!firstCounter.getHasFinishedLap()) {
+                const variableValues = counters.map((counter) => counter.get());
+                const substitutions = new Map([...variableValues]);
+                const substitutor = new Substitutor(substitutions);
+                const tree = substitutor.transform(expression);
+                const result = this.transform(tree);
+                if (typeof result !== "number") {
+                    throw new Error("could not calculate result for validity");
+                }
+                results.push(result);
+                lastCounter.increment();
+            }
+            return results;
+        };
+        this.createCounters = (variables, values) => {
+            const counters = [];
+            for (let i = 0; i < variables.length; ++i) {
+                const callback = i === 0
+                    ? () => { }
+                    : () => { counters[i - 1].increment(); };
+                const variable = variables[i];
+                const counter = new Counter(variable, values, callback);
+                counters.push(counter);
+            }
+            return counters;
+        };
     }
 }
 ;
@@ -178,4 +220,36 @@ function count(array, value) {
         }
         return count;
     }, 0);
+}
+class Counter {
+    constructor(variable, values, callback) {
+        this.variable = "";
+        this.values = [];
+        this.count = 0;
+        this.i = 0;
+        this.hasFinishedLap = false;
+        this.callback = () => { };
+        this.variable = variable;
+        this.values = values;
+        this.count = values.length;
+        this.callback = callback;
+    }
+    get() {
+        const value = this.values[this.i];
+        return [
+            this.variable,
+            value,
+        ];
+    }
+    increment() {
+        ++this.i;
+        if (this.i === this.count) {
+            this.i = 0;
+            this.hasFinishedLap = true;
+            this.callback();
+        }
+    }
+    getHasFinishedLap() {
+        return this.hasFinishedLap;
+    }
 }
