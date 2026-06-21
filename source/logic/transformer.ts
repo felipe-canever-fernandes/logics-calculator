@@ -21,8 +21,6 @@ export class LogicTransformer extends Transformer {
 			results.push(expression);
 		} else {
 			const variables = this.collectVariables(expression);
-			console.log(variables);
-
 			results = this.getResults(expression, variables);
 		}
 

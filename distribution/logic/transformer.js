@@ -18,7 +18,6 @@ export class LogicTransformer extends Transformer {
             }
             else {
                 const variables = this.collectVariables(expression);
-                console.log(variables);
                 results = this.getResults(expression, variables);
             }
             const totalCount = results.length;
