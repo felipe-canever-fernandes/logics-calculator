@@ -1,5 +1,6 @@
 import { Result, Validity } from "../logic/transformer.js";
 import { inputField, outputList } from "./dom.js";
+import { InvalidResult } from "./invalid-result.js";
 
 export function clearInput() {
 	inputField.value = "";
@@ -37,5 +38,5 @@ function convertToOutput(result: Result): string {
 		throw new Error("unknown validity");
 	}
 
-	throw new Error("invalid result");
+	throw new InvalidResult();
 }

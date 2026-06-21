@@ -1,6 +1,7 @@
 import { get_parser, UnexpectedCharacters, UnexpectedToken } from "../logic/lark.js";
 import { LogicTransformer } from "../logic/transformer.js";
 import { inputField } from "../ui/dom.js";
+import { InvalidResult } from "../ui/invalid-result.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
 const parser = get_parser();
 const logicTransformer = new LogicTransformer();
@@ -19,6 +20,9 @@ export function calculate() {
                 error instanceof UnexpectedToken) {
             const message = getUnexpectedMessage(error, input);
             alert(message);
+        }
+        else if (error instanceof InvalidResult) {
+            alert(`Algebraic expressions are not supported yet. Did you forget to add "?" at the end to calculate the validity of your expression?`);
         }
         else {
             throw error;
