@@ -1,4 +1,4 @@
-import { get_parser, Tree, UnexpectedCharacters } from "../logic/lark.js";
+import { get_parser, Tree, UnexpectedCharacters, UnexpectedToken } from "../logic/lark.js";
 import { LogicTransformer, Result } from "../logic/transformer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
@@ -18,7 +18,11 @@ export function calculate() {
 
 		clearInput();
 	} catch (error: unknown) {
-		if (error instanceof UnexpectedCharacters) {
+		if (
+			error instanceof UnexpectedCharacters
+			||
+			error instanceof UnexpectedToken
+		) {
 			const message = getUnexpectedCharacterMessage(error, input);
 			alert(message);
 		} else {
@@ -28,10 +32,11 @@ export function calculate() {
 }
 
 function getUnexpectedCharacterMessage(
-	error: UnexpectedCharacters,
+	error: UnexpectedCharacters | UnexpectedToken,
 	input: string,
 ): string {
+	const type = error instanceof UnexpectedCharacters ? "characters" : "token";
 	const errorIndex = error.column - 1;
 	const inputFromError = input.slice(errorIndex);
-	return `Unexpected character starting from "${inputFromError}".`;
+	return `Unexpected ${type} starting from "${inputFromError}".`;
 }
