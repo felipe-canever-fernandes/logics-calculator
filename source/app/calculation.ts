@@ -9,6 +9,11 @@ const logicTransformer = new LogicTransformer();
 
 export function calculate() {
 	const input = inputField.getValue();
+
+	if (input.trim() === "") {
+		return;
+	}
+
 	console.log(input);
 
 	try {
