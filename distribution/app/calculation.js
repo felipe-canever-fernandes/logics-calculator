@@ -1,13 +1,15 @@
-import { UnexpectedCharacters } from "../logic/lark.js";
-import { parser } from "../logic/parser.js";
+import { get_parser, UnexpectedCharacters } from "../logic/lark.js";
+import { LogicTransformer } from "../logic/transformer.js";
 import { inputField } from "../ui/dom.js";
 import { addOutput, clearInput } from "../ui/rendering.js";
+const parser = get_parser();
+const logicTransformer = new LogicTransformer();
 export function calculate() {
     const input = inputField.getValue();
     console.log(input);
     try {
-        const result = parser.parse(input);
-        console.log(result);
+        const tree = parser.parse(input);
+        const result = logicTransformer.transform(tree);
         addOutput(input, result);
         clearInput();
     }
