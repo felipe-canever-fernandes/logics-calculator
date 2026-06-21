@@ -1,6 +1,9 @@
 import { inputField } from "./ui/dom.js";
 import { setUpKeyboard } from "./ui/keyboard.js";
 import { calculate } from "./app/calculation.js";
+window.addEventListener("DOMContentLoaded", () => {
+    inputField.focus();
+});
 setUpKeyboard();
 inputField.addEventListener('beforeinput', (event) => {
     if (event.inputType === 'insertLineBreak') {
