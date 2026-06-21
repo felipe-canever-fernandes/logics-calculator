@@ -54,6 +54,8 @@ body {
 main {
 	flex-grow: 1;
 
+	min-height: 0;
+
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
@@ -61,6 +63,8 @@ main {
 
 .output {
 	flex-grow: 1;
+
+	overflow-y: auto;
 
 	list-style: none;
 	counter-reset: item;
