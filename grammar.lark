@@ -26,7 +26,6 @@ query	: expression "?"
 		| distinction
 		| crisp_truthness
 		| consistency
-		| contradiction
 		| parentheses
 		| variable
 		| value

@@ -81,7 +81,10 @@ export function setUpKeyboard() {
 						width: 0.5,
 					},
 					"\\circ",
-					"\\sigma",
+					{
+						label: "[separator]",
+						width: 1,
+					},
 					"?",
 					{
 						label: "[separator]",
