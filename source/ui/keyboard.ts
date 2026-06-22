@@ -18,9 +18,9 @@ export function setUpKeyboard() {
 						label: "[separator]",
 						width: 0.5,
 					},
+					"p",
 					"\\lnot",
 					"\\sim",
-					"p",
 					{
 						label: "[separator]",
 						width: 0.5,
@@ -49,9 +49,9 @@ export function setUpKeyboard() {
 						label: "[separator]",
 						width: 0.5,
 					},
+					"q",
 					"\\nabla",
 					"\\Delta",
-					"q",
 					{
 						label: "[separator]",
 						width: 0.5,
@@ -80,12 +80,12 @@ export function setUpKeyboard() {
 						label: "[separator]",
 						width: 0.5,
 					},
+					"?",
 					"\\circ",
 					{
 						label: "[separator]",
 						width: 1,
 					},
-					"?",
 					{
 						label: "[separator]",
 						width: 0.5,
