@@ -1,32 +1,61 @@
-import { Validity } from "../logic/transformer.js";
 import { inputField, outputList } from "./dom.js";
 import { InvalidResult } from "./invalid-result.js";
 export function clearInput() {
     inputField.value = "";
 }
 export function addOutput(input, result) {
-    const output = convertToOutput(result);
+    const { symbol, latex } = convertToOutput(result);
     const listItem = document.createElement("li");
     const div = document.createElement("div");
     div.innerHTML =
         `<math-div class="output-input">${input}</math-div>`;
     div.innerHTML +=
-        `<div><math-div class="output-symbol">=</math-div><div class="output-result">${output}</div></div>`;
+        `<div class="result"><math-div class="result-symbol">${symbol}</math-div><div class="result-value">${latex}</div></div>`;
     listItem.appendChild(div);
     outputList.appendChild(listItem);
 }
 function convertToOutput(result) {
     if (typeof result === "number") {
-        const latex = result === 0.5
-            ? "\\frac{1}{2}"
-            : String(result);
-        return `<math-div>${latex}</math-div>`;
+        const latex = convertNumberToLatex(result);
+        return {
+            symbol: "=",
+            latex: `<math-div>${latex}</math-div>`,
+        };
     }
-    if (typeof result === "string") {
-        if (Object.values(Validity).includes(result)) {
-            return result;
-        }
-        throw new Error("unknown validity");
+    if (checkIsValidity(result)) {
+        let elements = [...result];
+        elements = elements.sort((a, b) => {
+            if (a < b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        });
+        const latex = `\\left\\{${elements.map(convertNumberToLatex).join(", ")}\\right\\}`;
+        return {
+            symbol: "\\in",
+            latex: `<math-div>${latex}</math-div>`,
+        };
     }
     throw new InvalidResult();
+}
+;
+function convertNumberToLatex(value) {
+    if (value === 0.5) {
+        return "\\frac{1}{2}";
+    }
+    return String(value);
+}
+function checkIsValidity(result) {
+    const isSet = result instanceof Set;
+    if (!isSet) {
+        return false;
+    }
+    const isNumberSet = [...result].every((value) => typeof value === "number");
+    if (!isNumberSet) {
+        return false;
+    }
+    return true;
 }

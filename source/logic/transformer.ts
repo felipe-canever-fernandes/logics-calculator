@@ -5,42 +5,20 @@ import { VariableCollector } from "./variable-collector.js";
 type Expression = Tree | number;
 
 export type Result = number | Validity | Tree;
-
-export enum Validity {
-	CONTRADICTION = "contradiction",
-	CONTINGENCY = "contingency",
-	PARACONSISTENT_TAUTOLOGY = "paraconsistent tautology",
-	CONSISTENT_TAUTOLOGY = "consistent tautology",
-}
+export type Validity = Set<number>;
 
 export class LogicTransformer extends Transformer {
 	query = ([expression]: [Expression]): Validity => {
-		let results: number[] = [];
+		let results: Validity = new Set<number>();
 
 		if (typeof expression === "number") {
-			results.push(expression);
+			results.add(expression);
 		} else {
 			const variables = this.collectVariables(expression);
 			results = this.getResults(expression, variables);
 		}
 
-		const totalCount = results.length;
-
-		const zeroCount = count(results, 0);
-		if (zeroCount === totalCount) {
-			return Validity.CONTRADICTION;
-		}
-
-		const oneCount = count(results, 1);
-		if (oneCount === totalCount) {
-			return Validity.CONSISTENT_TAUTOLOGY;
-		}
-
-		if (zeroCount === 0) {
-			return Validity.PARACONSISTENT_TAUTOLOGY;
-		}
-
-		return Validity.CONTINGENCY;
+		return results;
 	};
 
 	weak_negation = ([x]: [Expression]): Expression => {
@@ -231,14 +209,14 @@ export class LogicTransformer extends Transformer {
 		return variables;
 	};
 
-	getResults = (expression: Expression, variables: string[]): number[] => {
+	getResults = (expression: Expression, variables: string[]): Validity => {
 		const values = [0, 0.5, 1];
 
 		const counters = this.createCounters(variables, values);
 		const firstCounter = counters[0];
 		const lastCounter = counters[variables.length - 1];
 
-		const results = [] as number[];
+		const results: Validity = new Set();
 		while (!firstCounter.getHasFinishedLap()) {
 			const variableValues = counters.map((counter) => counter.get());
 			const substitutions = new Map<string, number>([...variableValues]);
@@ -250,7 +228,7 @@ export class LogicTransformer extends Transformer {
 				throw new Error("could not calculate result for validity");
 			}
 
-			results.push(result);
+			results.add(result);
 
 			lastCounter.increment();
 		}

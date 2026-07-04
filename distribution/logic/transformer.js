@@ -1,38 +1,19 @@
 import { Transformer, Tree } from "./lark.js";
 import { Substitutor } from "./substitutor.js";
 import { VariableCollector } from "./variable-collector.js";
-export var Validity;
-(function (Validity) {
-    Validity["CONTRADICTION"] = "contradiction";
-    Validity["CONTINGENCY"] = "contingency";
-    Validity["PARACONSISTENT_TAUTOLOGY"] = "paraconsistent tautology";
-    Validity["CONSISTENT_TAUTOLOGY"] = "consistent tautology";
-})(Validity || (Validity = {}));
 export class LogicTransformer extends Transformer {
     constructor() {
         super(...arguments);
         this.query = ([expression]) => {
-            let results = [];
+            let results = new Set();
             if (typeof expression === "number") {
-                results.push(expression);
+                results.add(expression);
             }
             else {
                 const variables = this.collectVariables(expression);
                 results = this.getResults(expression, variables);
             }
-            const totalCount = results.length;
-            const zeroCount = count(results, 0);
-            if (zeroCount === totalCount) {
-                return Validity.CONTRADICTION;
-            }
-            const oneCount = count(results, 1);
-            if (oneCount === totalCount) {
-                return Validity.CONSISTENT_TAUTOLOGY;
-            }
-            if (zeroCount === 0) {
-                return Validity.PARACONSISTENT_TAUTOLOGY;
-            }
-            return Validity.CONTINGENCY;
+            return results;
         };
         this.weak_negation = ([x]) => {
             if (typeof x !== "number") {
@@ -186,7 +167,7 @@ export class LogicTransformer extends Transformer {
             const counters = this.createCounters(variables, values);
             const firstCounter = counters[0];
             const lastCounter = counters[variables.length - 1];
-            const results = [];
+            const results = new Set();
             while (!firstCounter.getHasFinishedLap()) {
                 const variableValues = counters.map((counter) => counter.get());
                 const substitutions = new Map([...variableValues]);
@@ -196,7 +177,7 @@ export class LogicTransformer extends Transformer {
                 if (typeof result !== "number") {
                     throw new Error("could not calculate result for validity");
                 }
-                results.push(result);
+                results.add(result);
                 lastCounter.increment();
             }
             return results;

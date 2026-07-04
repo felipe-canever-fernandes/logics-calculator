@@ -100,16 +100,17 @@ main {
 	gap: 12px;
 }
 
-.output > li > div > div {
+.result {
 	display: flex;
+	align-items: baseline;
 	gap: 0.5em;
 }
 
-.output-symbol {
+.result-symbol {
 	color: gray;
 }
 
-.output-result {
+.result-value {
 	font-weight: bold;
 }
 
