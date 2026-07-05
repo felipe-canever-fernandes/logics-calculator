@@ -15,7 +15,7 @@ query	: expression "?"
 		| weak_conjunction
 		| bochvar_conjunction
 		| sheffer_stroke
-		| l_strong_conjunction
+		| strong_conjunction
 		| g_implication
 		| l_implication
 		| j_implication
@@ -47,22 +47,22 @@ consistency			: "\\circ" unary
 variable			: VARIABLE
 value				: VALUE
 
-weak_disjunction		: expression "\\lor" unary
-bochvar_disjunction		: expression "\\underset{+}{\\lor}" unary
-quine_dagger			: expression "\\downarrow" unary
-strong_disjunction		: expression "\\oplus" unary
-weak_conjunction		: expression "\\land" unary
-bochvar_conjunction		: expression "\\underset{+}{\\land}" unary
-sheffer_stroke			: expression "\\uparrow" unary
-l_strong_conjunction	: expression "\\otimes" unary
-g_implication			: expression "\\xrightarrow[G]{}" unary
-l_implication			: expression "\\xrightarrow[L]{}" unary
-j_implication			: expression "\\xrightarrow[J]{}" unary
-k_implication			: expression "\\xrightarrow[K]{}" unary
-g_bi_implication		: expression "\\xleftrightarrow[G]{}" unary
-l_bi_implication		: expression "\\xleftrightarrow[L]{}" unary
-j_bi_implication		: expression "\\xleftrightarrow[J]{}" unary
-k_bi_implication		: expression "\\xleftrightarrow[K]{}" unary
+weak_disjunction	: expression "\\lor" unary
+bochvar_disjunction	: expression "\\underset{+}{\\lor}" unary
+quine_dagger		: expression "\\downarrow" unary
+strong_disjunction	: expression "\\oplus" unary
+weak_conjunction	: expression "\\land" unary
+bochvar_conjunction	: expression "\\underset{+}{\\land}" unary
+sheffer_stroke		: expression "\\uparrow" unary
+strong_conjunction	: expression "\\otimes" unary
+g_implication		: expression "\\xrightarrow[G]{}" unary
+l_implication		: expression "\\xrightarrow[L]{}" unary
+j_implication		: expression "\\xrightarrow[J]{}" unary
+k_implication		: expression "\\xrightarrow[K]{}" unary
+g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary
+l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
+j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
+k_bi_implication	: expression "\\xleftrightarrow[K]{}" unary
 
 VARIABLE	: /[a-z]/
 

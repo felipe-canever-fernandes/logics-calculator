@@ -174,9 +174,9 @@ export class LogicTransformer extends Transformer {
 		return 1 - Math.min(x, y);
 	};
 
-	l_strong_conjunction = ([x, y]: [Expression, Expression]): Expression => {
+	strong_conjunction = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("l_strong_conjunction", [x, y]);
+			return new Tree("strong_conjunction", [x, y]);
 		}
 
 		return Math.max(0, x + y - 1);
