@@ -13,6 +13,7 @@ query	: expression "?"
 		| quine_dagger
 		| strong_disjunction
 		| weak_conjunction
+		| bochvar_conjunction
 		| l_strong_conjunction
 		| g_implication
 		| l_implication
@@ -50,6 +51,7 @@ bochvar_disjunction		: expression "\\underset{+}{\\lor}" unary
 quine_dagger			: expression "\\downarrow" unary
 strong_disjunction		: expression "\\oplus" unary
 weak_conjunction		: expression "\\land" unary
+bochvar_conjunction		: expression "\\underset{+}{\\land}" unary
 l_strong_conjunction	: expression "\\otimes" unary
 g_implication			: expression "\\xrightarrow[G]{}" unary
 l_implication			: expression "\\xrightarrow[L]{}" unary

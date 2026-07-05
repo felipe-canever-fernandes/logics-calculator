@@ -117,6 +117,15 @@ export class LogicTransformer extends Transformer {
             const disjoined = this.weak_disjunction([negatedX, negatedY]);
             return this.weak_negation([disjoined]);
         };
+        this.bochvar_conjunction = ([x, y]) => {
+            if (typeof x !== "number" || typeof y !== "number") {
+                return new Tree("bochvar_conjunction", [x, y]);
+            }
+            if (x == 0.5 || y == 0.5) {
+                return 0.5;
+            }
+            return Math.min(x, y);
+        };
         this.l_strong_conjunction = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
                 return new Tree("l_strong_conjunction", [x, y]);
