@@ -124,7 +124,7 @@ export class LogicTransformer extends Transformer {
 			return 0.5;
 		}
 
-		return Math.min(x, y);
+		return Math.max(x, y);
 	}
 
 	quine_dagger = ([x, y]: [Expression, Expression]): Expression => {

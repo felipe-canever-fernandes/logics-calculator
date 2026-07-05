@@ -94,7 +94,7 @@ export class LogicTransformer extends Transformer {
             if (x == 0.5 || y == 0.5) {
                 return 0.5;
             }
-            return Math.min(x, y);
+            return Math.max(x, y);
         };
         this.quine_dagger = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
