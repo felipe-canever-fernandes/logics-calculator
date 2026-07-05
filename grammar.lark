@@ -66,7 +66,7 @@ j_implication		: expression "\\xrightarrow[J]{}" unary
 k_implication		: expression "\\xrightarrow[K]{}" unary
 bochvar_implication	: expression "\\xrightarrow[+]{}" unary
 r_implication		: expression "\\xrightarrow[R]{}" unary
-goguen_implication	: expression "\\xleftrightarrow[\\pi]{}" unary
+goguen_implication	: expression "\\xrightarrow[\\pi]{}" unary
 l_equivalence		: expression "\\xleftrightarrow[L]{}" unary
 g_equivalence		: expression "\\xleftrightarrow[G]{}" unary
 j_equivalence		: expression "\\xleftrightarrow[J]{}" unary
