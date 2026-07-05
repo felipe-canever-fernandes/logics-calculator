@@ -34,10 +34,10 @@ export class LogicTransformer extends Transformer {
             if (typeof x !== "number") {
                 return new Tree("strong_negation", [x]);
             }
-            const distinguished = this.distinction([x]);
+            const distinguished = this.mosil_nabla_operator([x]);
             return this.weak_negation([distinguished]);
         };
-        this.distinction = ([x]) => {
+        this.mosil_nabla_operator = ([x]) => {
             if (typeof x !== "number") {
                 return new Tree("distinction", [x]);
             }
@@ -48,7 +48,7 @@ export class LogicTransformer extends Transformer {
                 return new Tree("crisp_truthness", [x]);
             }
             const negated = this.weak_negation([x]);
-            const distinguished = this.distinction([negated]);
+            const distinguished = this.mosil_nabla_operator([negated]);
             return this.weak_negation([distinguished]);
         };
         this.consistency = ([x]) => {
@@ -122,7 +122,7 @@ export class LogicTransformer extends Transformer {
             if (typeof x !== "number" || typeof y !== "number") {
                 return new Tree("j_implication", [x, y]);
             }
-            const distinguishedX = this.distinction([x]);
+            const distinguishedX = this.mosil_nabla_operator([x]);
             const negated = this.weak_negation([distinguishedX]);
             return this.disjunction([negated, y]);
         };
