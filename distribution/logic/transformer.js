@@ -21,6 +21,15 @@ export class LogicTransformer extends Transformer {
             }
             return 1 - x;
         };
+        this.post_negation = ([x]) => {
+            if (typeof x !== "number") {
+                return new Tree("post_negation", [x]);
+            }
+            if (x === 0) {
+                return 1;
+            }
+            return x - 0.5;
+        };
         this.strong_negation = ([x]) => {
             if (typeof x !== "number") {
                 return new Tree("strong_negation", [x]);

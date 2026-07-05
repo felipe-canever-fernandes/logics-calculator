@@ -22,6 +22,7 @@ query	: expression "?"
 		| k_bi_implication
 
 ?unary	: weak_negation
+		| post_negation
 		| strong_negation
 		| distinction
 		| crisp_truthness
@@ -31,6 +32,7 @@ query	: expression "?"
 		| value
 
 weak_negation	: "\\overline{" expression "}"
+post_negation	: "!" expression
 strong_negation	: "\\lnot" unary
 distinction		: "\\nabla" unary
 crisp_truthness	: "\\Delta" unary
