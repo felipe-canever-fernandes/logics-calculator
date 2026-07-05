@@ -39,13 +39,13 @@ export class LogicTransformer extends Transformer {
         };
         this.mosil_nabla_operator = ([x]) => {
             if (typeof x !== "number") {
-                return new Tree("distinction", [x]);
+                return new Tree("mosil_nabla_operator", [x]);
             }
             return x == 0 ? 0 : 1;
         };
-        this.crisp_truthness = ([x]) => {
+        this.baaz_delta_operator = ([x]) => {
             if (typeof x !== "number") {
-                return new Tree("crisp_truthness", [x]);
+                return new Tree("baaz_delta_operator", [x]);
             }
             const negated = this.weak_negation([x]);
             const distinguished = this.mosil_nabla_operator([negated]);

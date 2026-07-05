@@ -52,15 +52,15 @@ export class LogicTransformer extends Transformer {
 
 	mosil_nabla_operator = ([x]: [Expression]): Expression => {
 		if (typeof x !== "number") {
-			return new Tree("distinction", [x]);
+			return new Tree("mosil_nabla_operator", [x]);
 		}
 
 		return x == 0 ? 0 : 1;
 	};
 
-	crisp_truthness = ([x]: [Expression]): Expression => {
+	baaz_delta_operator = ([x]: [Expression]): Expression => {
 		if (typeof x !== "number") {
-			return new Tree("crisp_truthness", [x]);
+			return new Tree("baaz_delta_operator", [x]);
 		}
 
 		const negated = this.weak_negation([x]);
