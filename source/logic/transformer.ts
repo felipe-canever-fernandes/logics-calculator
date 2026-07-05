@@ -315,6 +315,16 @@ export class LogicTransformer extends Transformer {
 		]);
 	};
 
+	r_equivalence = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("r_equivalence", [x, y]);
+		}
+
+		const rImplicatedXY = this.r_implication([x, y]);
+		const rImplicatedYX = this.r_implication([y, x]);
+		return this.weak_conjunction([rImplicatedXY, rImplicatedYX]);
+	};
+
 	collectVariables = (expression: Expression): string[] => {
 		const collector = new VariableCollector();
 		collector.transform(expression);
