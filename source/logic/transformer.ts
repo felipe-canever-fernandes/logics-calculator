@@ -261,16 +261,6 @@ export class LogicTransformer extends Transformer {
 		return y / x;
 	};
 
-	g_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
-		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("g_bi_implication", [x, y]);
-		}
-
-		const implicatedXY = this.g_implication([x, y]);
-		const implicatedYX = this.g_implication([y, x]);
-		return this.weak_conjunction([implicatedXY, implicatedYX]);
-	};
-
 	l_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("l_bi_implication", [x, y]);
@@ -278,6 +268,16 @@ export class LogicTransformer extends Transformer {
 
 		const implicatedXY = this.l_implication([x, y]);
 		const implicatedYX = this.l_implication([y, x]);
+		return this.weak_conjunction([implicatedXY, implicatedYX]);
+	};
+
+	g_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("g_bi_implication", [x, y]);
+		}
+
+		const implicatedXY = this.g_implication([x, y]);
+		const implicatedYX = this.g_implication([y, x]);
 		return this.weak_conjunction([implicatedXY, implicatedYX]);
 	};
 

@@ -23,8 +23,8 @@ query	: expression "?"
 		| bochvar_implication
 		| r_implication
 		| goguen_implication
-		| g_bi_implication
 		| l_bi_implication
+		| g_bi_implication
 		| j_bi_implication
 		| k_bi_implication
 
@@ -65,8 +65,8 @@ k_implication		: expression "\\xrightarrow[K]{}" unary
 bochvar_implication	: expression "\\xrightarrow[+]{}" unary
 r_implication		: expression "\\xrightarrow[R]{}" unary
 goguen_implication	: expression "\\xleftrightarrow[\\pi]{}" unary
-g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary
 l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
+g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary
 j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
 k_bi_implication	: expression "\\xleftrightarrow[K]{}" unary
 
