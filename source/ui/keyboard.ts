@@ -106,7 +106,7 @@ export function setUpKeyboard() {
 			],
 		},
 		{
-			label: "Variables",
+			label: "Alphabet",
 
 			rows: [
 				["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
