@@ -102,9 +102,9 @@ export class LogicTransformer extends Transformer {
             }
             return 1 - Math.max(x, y);
         };
-        this.l_strong_disjunction = ([x, y]) => {
+        this.strong_disjunction = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
-                return new Tree("l_strong_disjunction", [x, y]);
+                return new Tree("strong_disjunction", [x, y]);
             }
             return Math.min(1, x + y);
         };
