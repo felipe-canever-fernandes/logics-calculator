@@ -105,7 +105,7 @@ export class LogicTransformer extends Transformer {
 			return new Tree("l_strong_disjunction", [x, y]);
 		}
 
-		return Math.min(1, x + y - 1);
+		return Math.min(1, x + y);
 	};
 
 	conjunction = ([x, y]: [Expression, Expression]): Expression => {

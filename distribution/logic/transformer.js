@@ -80,7 +80,7 @@ export class LogicTransformer extends Transformer {
             if (typeof x !== "number" || typeof y !== "number") {
                 return new Tree("l_strong_disjunction", [x, y]);
             }
-            return Math.min(1, x + y - 1);
+            return Math.min(1, x + y);
         };
         this.conjunction = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
