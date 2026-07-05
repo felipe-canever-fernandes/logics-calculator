@@ -44,6 +44,10 @@ export function setUpKeyboard() {
                                 latex: "\\underset{+}{\\lor}",
                                 aside: "Bochvar disjunction",
                             },
+                            {
+                                latex: "\\ominus",
+                                aside: "exclusive disjunction",
+                            },
                         ],
                     },
                     {
@@ -59,7 +63,7 @@ export function setUpKeyboard() {
                     {
                         latex: "\\xrightarrow[L]{}",
                         aside: "Łukasiewicz implication",
-                        width: 2,
+                        width: 1.5,
                         variants: [
                             {
                                 latex: "\\xrightarrow[G]{}",
@@ -140,7 +144,7 @@ export function setUpKeyboard() {
                     {
                         latex: "\\xleftrightarrow[L]{}",
                         aside: "Łukasiewicz equivalence",
-                        width: 2,
+                        width: 1.5,
                         variants: [
                             {
                                 latex: "\\xleftrightarrow[G]{}",
@@ -208,13 +212,8 @@ export function setUpKeyboard() {
                         aside: "strong conjunction",
                     },
                     {
-                        latex: "\\ominus",
-                        aside: "exclusive disjunction",
-                    },
-                    {
-                        latex: "\\odot",
-                        aside: "product",
-                        width: 1,
+                        label: "[separator]",
+                        width: 1.5,
                     },
                     {
                         label: "[separator]",
