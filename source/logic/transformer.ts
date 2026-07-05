@@ -301,6 +301,20 @@ export class LogicTransformer extends Transformer {
 		return this.weak_conjunction([kImplicatedXY, kImplicatedYX]);
 	};
 
+	bochvar_equivalence = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("bochvar_equivalence", [x, y]);
+		}
+
+		const bochvarImplicatedXY = this.bochvar_implication([x, y]);
+		const bochvarImplicatedYX = this.bochvar_implication([y, x]);
+
+		return this.weak_conjunction([
+			bochvarImplicatedXY,
+			bochvarImplicatedYX,
+		]);
+	};
+
 	collectVariables = (expression: Expression): string[] => {
 		const collector = new VariableCollector();
 		collector.transform(expression);
