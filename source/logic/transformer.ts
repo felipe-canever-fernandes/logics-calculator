@@ -86,7 +86,7 @@ export class LogicTransformer extends Transformer {
 		}
 
 		const negated = this.weak_negation([x]);
-		const conjoined = this.conjunction([x, negated]);
+		const conjoined = this.weak_conjunction([x, negated]);
 		return this.strong_negation([conjoined]);
 	};
 
@@ -143,9 +143,9 @@ export class LogicTransformer extends Transformer {
 		return Math.min(1, x + y);
 	};
 
-	conjunction = ([x, y]: [Expression, Expression]): Expression => {
+	weak_conjunction = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("conjunction", [x, y]);
+			return new Tree("weak_conjunction", [x, y]);
 		}
 
 		const negatedX = this.weak_negation([x]);
@@ -204,7 +204,7 @@ export class LogicTransformer extends Transformer {
 
 		const implicatedXY = this.g_implication([x, y]);
 		const implicatedYX = this.g_implication([y, x]);
-		return this.conjunction([implicatedXY, implicatedYX]);
+		return this.weak_conjunction([implicatedXY, implicatedYX]);
 	};
 
 	l_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
@@ -214,7 +214,7 @@ export class LogicTransformer extends Transformer {
 
 		const implicatedXY = this.l_implication([x, y]);
 		const implicatedYX = this.l_implication([y, x]);
-		return this.conjunction([implicatedXY, implicatedYX]);
+		return this.weak_conjunction([implicatedXY, implicatedYX]);
 	};
 
 	j_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
@@ -224,7 +224,7 @@ export class LogicTransformer extends Transformer {
 
 		const jImplicatedXY = this.j_implication([x, y]);
 		const jImplicatedYX = this.j_implication([y, x]);
-		return this.conjunction([jImplicatedXY, jImplicatedYX]);
+		return this.weak_conjunction([jImplicatedXY, jImplicatedYX]);
 	};
 
 	k_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
@@ -234,7 +234,7 @@ export class LogicTransformer extends Transformer {
 
 		const kImplicatedXY = this.k_implication([x, y]);
 		const kImplicatedYX = this.k_implication([y, x]);
-		return this.conjunction([kImplicatedXY, kImplicatedYX]);
+		return this.weak_conjunction([kImplicatedXY, kImplicatedYX]);
 	};
 
 	collectVariables = (expression: Expression): string[] => {
