@@ -261,9 +261,9 @@ export class LogicTransformer extends Transformer {
 		return y / x;
 	};
 
-	l_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
+	l_equivalence = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("l_bi_implication", [x, y]);
+			return new Tree("l_equivalence", [x, y]);
 		}
 
 		const implicatedXY = this.l_implication([x, y]);
