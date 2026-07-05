@@ -216,9 +216,9 @@ export class LogicTransformer extends Transformer {
             const implicatedYX = this.g_implication([y, x]);
             return this.weak_conjunction([implicatedXY, implicatedYX]);
         };
-        this.j_bi_implication = ([x, y]) => {
+        this.j_equivalence = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
-                return new Tree("j_bi_implication", [x, y]);
+                return new Tree("j_equivalence", [x, y]);
             }
             const jImplicatedXY = this.j_implication([x, y]);
             const jImplicatedYX = this.j_implication([y, x]);
