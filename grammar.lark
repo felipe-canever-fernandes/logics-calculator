@@ -10,6 +10,7 @@ query	: expression "?"
 
 ?binary	: weak_disjunction
 		| bochvar_disjunction
+		| quine_dagger
 		| l_strong_disjunction
 		| conjunction
 		| l_strong_conjunction
@@ -46,6 +47,7 @@ value					: VALUE
 
 weak_disjunction		: expression "\\lor" unary
 bochvar_disjunction		: expression "\\underset{+}{\\lor}" unary
+quine_dagger			: expression "\\downarrow" unary
 l_strong_disjunction	: expression "\\oplus" unary
 conjunction				: expression "\\land" unary
 l_strong_conjunction	: expression "\\otimes" unary

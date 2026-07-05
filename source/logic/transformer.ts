@@ -127,6 +127,14 @@ export class LogicTransformer extends Transformer {
 		return Math.min(x, y);
 	}
 
+	quine_dagger = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("quine_dagger", [x, y]);
+		}
+
+		return 1 - Math.max(x, y);
+	};
+
 	l_strong_disjunction = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("l_strong_disjunction", [x, y]);
