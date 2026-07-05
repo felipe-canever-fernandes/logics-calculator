@@ -251,6 +251,14 @@ export class LogicTransformer extends Transformer {
             const rImplicatedYX = this.r_implication([y, x]);
             return this.weak_conjunction([rImplicatedXY, rImplicatedYX]);
         };
+        this.goguen_equivalence = ([x, y]) => {
+            if (typeof x !== "number" || typeof y !== "number") {
+                return new Tree("goguen_equivalence", [x, y]);
+            }
+            const goguenImplicatedXY = this.goguen_implication([x, y]);
+            const goguenImplicatedYX = this.goguen_implication([y, x]);
+            return this.weak_conjunction([goguenImplicatedXY, goguenImplicatedYX]);
+        };
         this.collectVariables = (expression) => {
             const collector = new VariableCollector();
             collector.transform(expression);

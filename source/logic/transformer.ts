@@ -325,6 +325,16 @@ export class LogicTransformer extends Transformer {
 		return this.weak_conjunction([rImplicatedXY, rImplicatedYX]);
 	};
 
+	goguen_equivalence = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("goguen_equivalence", [x, y]);
+		}
+
+		const goguenImplicatedXY = this.goguen_implication([x, y]);
+		const goguenImplicatedYX = this.goguen_implication([y, x]);
+		return this.weak_conjunction([goguenImplicatedXY, goguenImplicatedYX]);
+	};
+
 	collectVariables = (expression: Expression): string[] => {
 		const collector = new VariableCollector();
 		collector.transform(expression);
