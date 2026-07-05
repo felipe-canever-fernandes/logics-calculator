@@ -87,6 +87,15 @@ export class LogicTransformer extends Transformer {
             }
             return Math.max(x, y);
         };
+        this.bochvar_disjunction = ([x, y]) => {
+            if (typeof x !== "number" || typeof y !== "number") {
+                return new Tree("bochvar_disjunction", [x, y]);
+            }
+            if (x == 0.5 || y == 0.5) {
+                return 0.5;
+            }
+            return Math.min(x, y);
+        };
         this.l_strong_disjunction = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
                 return new Tree("l_strong_disjunction", [x, y]);
