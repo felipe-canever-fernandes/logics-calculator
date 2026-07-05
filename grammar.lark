@@ -26,7 +26,7 @@ query	: expression "?"
 ?unary	: weak_negation
 		| post_negation
 		| strong_negation
-		| mosil_nabla_operator
+		| mosil_nabla
 		| baaz_delta_operator
 		| doubtful_operator
 		| consistency
@@ -34,16 +34,16 @@ query	: expression "?"
 		| variable
 		| value
 
-weak_negation			: "\\overline{" expression "}"
-post_negation			: "!" expression
-strong_negation			: "\\lnot" unary
-mosil_nabla_operator	: "\\nabla" unary
-baaz_delta_operator		: "\\Delta" unary
-doubtful_operator		: "I" unary
-consistency				: "\\circ" unary
-?parentheses			: "\\left(" expression "\\right)"
-variable				: VARIABLE
-value					: VALUE
+weak_negation		: "\\overline{" expression "}"
+post_negation		: "!" expression
+strong_negation		: "\\lnot" unary
+mosil_nabla			: "\\nabla" unary
+baaz_delta_operator	: "\\Delta" unary
+doubtful_operator	: "I" unary
+consistency			: "\\circ" unary
+?parentheses		: "\\left(" expression "\\right)"
+variable			: VARIABLE
+value				: VALUE
 
 weak_disjunction		: expression "\\lor" unary
 bochvar_disjunction		: expression "\\underset{+}{\\lor}" unary

@@ -128,7 +128,7 @@ export function setUpKeyboard() {
 
 					{
 						latex: "\\nabla",
-						aside: "Mosil nabla operator",
+						aside: "Mosil nabla",
 
 						variants: [
 							{

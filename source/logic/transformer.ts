@@ -46,13 +46,13 @@ export class LogicTransformer extends Transformer {
 			return new Tree("strong_negation", [x]);
 		}
 
-		const distinguished = this.mosil_nabla_operator([x]);
+		const distinguished = this.mosil_nabla([x]);
 		return this.weak_negation([distinguished]);
 	};
 
-	mosil_nabla_operator = ([x]: [Expression]): Expression => {
+	mosil_nabla = ([x]: [Expression]): Expression => {
 		if (typeof x !== "number") {
-			return new Tree("mosil_nabla_operator", [x]);
+			return new Tree("mosil_nabla", [x]);
 		}
 
 		return x == 0 ? 0 : 1;
@@ -64,7 +64,7 @@ export class LogicTransformer extends Transformer {
 		}
 
 		const negated = this.weak_negation([x]);
-		const distinguished = this.mosil_nabla_operator([negated]);
+		const distinguished = this.mosil_nabla([negated]);
 		return this.weak_negation([distinguished]);
 	};
 
@@ -183,7 +183,7 @@ export class LogicTransformer extends Transformer {
 			return new Tree("j_implication", [x, y]);
 		}
 
-		const distinguishedX = this.mosil_nabla_operator([x]);
+		const distinguishedX = this.mosil_nabla([x]);
 		const negated = this.weak_negation([distinguishedX]);
 		return this.weak_disjunction([negated, y]);
 	};
