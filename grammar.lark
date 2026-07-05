@@ -26,7 +26,7 @@ query	: expression "?"
 		| l_equivalence
 		| g_equivalence
 		| j_equivalence
-		| k_bi_implication
+		| k_equivalence
 
 ?unary	: weak_negation
 		| post_negation
@@ -68,7 +68,7 @@ goguen_implication	: expression "\\xleftrightarrow[\\pi]{}" unary
 l_equivalence		: expression "\\xleftrightarrow[L]{}" unary
 g_equivalence		: expression "\\xleftrightarrow[G]{}" unary
 j_equivalence		: expression "\\xleftrightarrow[J]{}" unary
-k_bi_implication	: expression "\\xleftrightarrow[K]{}" unary
+k_equivalence		: expression "\\xleftrightarrow[K]{}" unary
 
 VARIABLE	: /[a-z]/
 

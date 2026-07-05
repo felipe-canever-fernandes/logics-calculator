@@ -291,9 +291,9 @@ export class LogicTransformer extends Transformer {
 		return this.weak_conjunction([jImplicatedXY, jImplicatedYX]);
 	};
 
-	k_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
+	k_equivalence = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("k_bi_implication", [x, y]);
+			return new Tree("k_equivalence", [x, y]);
 		}
 
 		const kImplicatedXY = this.k_implication([x, y]);
