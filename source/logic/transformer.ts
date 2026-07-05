@@ -229,6 +229,26 @@ export class LogicTransformer extends Transformer {
 		return Math.max(1 - x, y);
 	};
 
+	r_implication = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("r_implication", [x, y]);
+		}
+
+		if (x < y) {
+			return 1;
+		}
+
+		if (x == y) {
+			if (x == 0 || x == 1) {
+				return 1;
+			} else {
+				return 0.5;
+			}
+		}
+
+		return 0;
+	};
+
 	g_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("g_bi_implication", [x, y]);
