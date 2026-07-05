@@ -117,7 +117,7 @@ export function setUpKeyboard() {
                         variants: [
                             {
                                 latex: "\\Delta",
-                                aside: "Baaz delta operator",
+                                aside: "Baaz delta",
                             },
                             {
                                 latex: "I",

@@ -43,9 +43,9 @@ export class LogicTransformer extends Transformer {
             }
             return x == 0 ? 0 : 1;
         };
-        this.baaz_delta_operator = ([x]) => {
+        this.baaz_delta = ([x]) => {
             if (typeof x !== "number") {
-                return new Tree("baaz_delta_operator", [x]);
+                return new Tree("baaz_delta", [x]);
             }
             const negated = this.weak_negation([x]);
             const distinguished = this.mosil_nabla([negated]);

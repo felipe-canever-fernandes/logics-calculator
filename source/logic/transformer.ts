@@ -58,9 +58,9 @@ export class LogicTransformer extends Transformer {
 		return x == 0 ? 0 : 1;
 	};
 
-	baaz_delta_operator = ([x]: [Expression]): Expression => {
+	baaz_delta = ([x]: [Expression]): Expression => {
 		if (typeof x !== "number") {
-			return new Tree("baaz_delta_operator", [x]);
+			return new Tree("baaz_delta", [x]);
 		}
 
 		const negated = this.weak_negation([x]);
