@@ -68,13 +68,6 @@ export class LogicTransformer extends Transformer {
             const conjoined = this.conjunction([x, negated]);
             return this.strong_negation([conjoined]);
         };
-        this.contradiction = ([x]) => {
-            if (typeof x !== "number") {
-                return new Tree("contradiction", [x]);
-            }
-            const negated = this.strong_negation([x]);
-            return this.conjunction([x, negated]);
-        };
         this.value = ([token]) => {
             const value = token.value;
             switch (value) {

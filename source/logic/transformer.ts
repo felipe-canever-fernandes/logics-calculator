@@ -90,15 +90,6 @@ export class LogicTransformer extends Transformer {
 		return this.strong_negation([conjoined]);
 	};
 
-	contradiction = ([x]: [Expression]): Expression => {
-		if (typeof x !== "number") {
-			return new Tree("contradiction", [x]);
-		}
-
-		const negated = this.strong_negation([x]);
-		return this.conjunction([x, negated]);
-	};
-
 	value = ([token]: [Token]): number => {
 		const value = token.value;
 

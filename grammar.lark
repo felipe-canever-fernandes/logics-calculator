@@ -39,7 +39,6 @@ mosil_nabla_operator	: "\\nabla" unary
 baaz_delta_operator		: "\\Delta" unary
 doubtful_operator		: "I" unary
 consistency				: "\\circ" unary
-contradiction			: "\\sigma" unary
 ?parentheses			: "\\left(" expression "\\right)"
 variable				: VARIABLE
 value					: VALUE
