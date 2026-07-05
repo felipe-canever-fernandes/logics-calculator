@@ -20,6 +20,7 @@ query	: expression "?"
 		| g_implication
 		| j_implication
 		| k_implication
+		| bochvar_implication
 		| g_bi_implication
 		| l_bi_implication
 		| j_bi_implication
@@ -59,6 +60,7 @@ l_implication		: expression "\\xrightarrow[L]{}" unary
 g_implication		: expression "\\xrightarrow[G]{}" unary
 j_implication		: expression "\\xrightarrow[J]{}" unary
 k_implication		: expression "\\xrightarrow[K]{}" unary
+bochvar_implication	: expression "\\xrightarrow[+]{}" unary
 g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary
 l_bi_implication	: expression "\\xleftrightarrow[L]{}" unary
 j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
