@@ -14,6 +14,7 @@ query	: expression "?"
 		| strong_disjunction
 		| weak_conjunction
 		| bochvar_conjunction
+		| sheffer_stroke
 		| l_strong_conjunction
 		| g_implication
 		| l_implication
@@ -52,6 +53,7 @@ quine_dagger			: expression "\\downarrow" unary
 strong_disjunction		: expression "\\oplus" unary
 weak_conjunction		: expression "\\land" unary
 bochvar_conjunction		: expression "\\underset{+}{\\land}" unary
+sheffer_stroke			: expression "\\uparrow" unary
 l_strong_conjunction	: expression "\\otimes" unary
 g_implication			: expression "\\xrightarrow[G]{}" unary
 l_implication			: expression "\\xrightarrow[L]{}" unary

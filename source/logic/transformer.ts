@@ -166,6 +166,14 @@ export class LogicTransformer extends Transformer {
 		return Math.min(x, y);
 	};
 
+	sheffer_stroke = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("sheffer_stroke", [x, y]);
+		}
+
+		return 1 - Math.min(x, y);
+	};
+
 	l_strong_conjunction = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("l_strong_conjunction", [x, y]);
