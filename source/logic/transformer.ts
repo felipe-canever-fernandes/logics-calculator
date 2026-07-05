@@ -68,6 +68,18 @@ export class LogicTransformer extends Transformer {
 		return this.weak_negation([distinguished]);
 	};
 
+	doubtful_operator = ([x]: [Expression]): Expression => {
+		if (typeof x !== "number") {
+			return new Tree("doubtful_operator", [x]);
+		}
+
+		if (x == 1 - x) {
+			return 1;
+		}
+
+		return 0;
+	};
+
 	consistency = ([x]: [Expression]): Expression => {
 		if (typeof x !== "number") {
 			return new Tree("consistency", [x]);

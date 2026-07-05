@@ -51,6 +51,15 @@ export class LogicTransformer extends Transformer {
             const distinguished = this.mosil_nabla_operator([negated]);
             return this.weak_negation([distinguished]);
         };
+        this.doubtful_operator = ([x]) => {
+            if (typeof x !== "number") {
+                return new Tree("doubtful_operator", [x]);
+            }
+            if (x == 1 - x) {
+                return 1;
+            }
+            return 0;
+        };
         this.consistency = ([x]) => {
             if (typeof x !== "number") {
                 return new Tree("consistency", [x]);
