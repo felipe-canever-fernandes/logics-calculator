@@ -8,7 +8,7 @@ query	: expression "?"
 ?operation	: binary
 			| unary
 
-?binary	: disjunction
+?binary	: weak_disjunction
 		| l_strong_disjunction
 		| conjunction
 		| l_strong_conjunction
@@ -43,7 +43,7 @@ consistency				: "\\circ" unary
 variable				: VARIABLE
 value					: VALUE
 
-disjunction				: expression "\\lor" unary
+weak_disjunction		: expression "\\lor" unary
 l_strong_disjunction	: expression "\\oplus" unary
 conjunction				: expression "\\land" unary
 l_strong_conjunction	: expression "\\otimes" unary

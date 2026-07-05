@@ -107,9 +107,9 @@ export class LogicTransformer extends Transformer {
 		throw new Error(`Invalid value ${value}`);
 	};
 
-	disjunction = ([x, y]: [Expression, Expression]): Expression => {
+	weak_disjunction = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("disjunction", [x, y]);
+			return new Tree("weak_disjunction", [x, y]);
 		}
 
 		return Math.max(x, y);
@@ -130,7 +130,7 @@ export class LogicTransformer extends Transformer {
 
 		const negatedX = this.weak_negation([x]);
 		const negatedY = this.weak_negation([y]);
-		const disjoined = this.disjunction([negatedX, negatedY]);
+		const disjoined = this.weak_disjunction([negatedX, negatedY]);
 		return this.weak_negation([disjoined]);
 	};
 
@@ -165,7 +165,7 @@ export class LogicTransformer extends Transformer {
 
 		const distinguishedX = this.mosil_nabla_operator([x]);
 		const negated = this.weak_negation([distinguishedX]);
-		return this.disjunction([negated, y]);
+		return this.weak_disjunction([negated, y]);
 	};
 
 	k_implication = ([x, y]: [Expression, Expression]): Expression => {
@@ -174,7 +174,7 @@ export class LogicTransformer extends Transformer {
 		}
 
 		const negatedX = this.weak_negation([x]);
-		return this.disjunction([negatedX, y]);
+		return this.weak_disjunction([negatedX, y]);
 	};
 
 	g_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
