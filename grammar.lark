@@ -24,7 +24,7 @@ query	: expression "?"
 		| r_implication
 		| goguen_implication
 		| l_equivalence
-		| g_bi_implication
+		| g_equivalence
 		| j_bi_implication
 		| k_bi_implication
 
@@ -66,7 +66,7 @@ bochvar_implication	: expression "\\xrightarrow[+]{}" unary
 r_implication		: expression "\\xrightarrow[R]{}" unary
 goguen_implication	: expression "\\xleftrightarrow[\\pi]{}" unary
 l_equivalence		: expression "\\xleftrightarrow[L]{}" unary
-g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary
+g_equivalence		: expression "\\xleftrightarrow[G]{}" unary
 j_bi_implication	: expression "\\xleftrightarrow[J]{}" unary
 k_bi_implication	: expression "\\xleftrightarrow[K]{}" unary
 
