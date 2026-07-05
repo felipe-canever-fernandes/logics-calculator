@@ -249,6 +249,18 @@ export class LogicTransformer extends Transformer {
 		return 0;
 	};
 
+	goguen_implication = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("goguen_implication", [x, y]);
+		}
+
+		if (x <= y) {
+			return 1;
+		}
+
+		return y / x;
+	};
+
 	g_bi_implication = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("g_bi_implication", [x, y]);
