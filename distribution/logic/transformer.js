@@ -138,17 +138,17 @@ export class LogicTransformer extends Transformer {
             }
             return Math.max(0, x + y - 1);
         };
-        this.g_implication = ([x, y]) => {
-            if (typeof x !== "number" || typeof y !== "number") {
-                return new Tree("g_implication", [x, y]);
-            }
-            return x <= y ? 1 : y;
-        };
         this.l_implication = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {
                 return new Tree("l_implication", [x, y]);
             }
             return Math.min(1, 1 - x + y);
+        };
+        this.g_implication = ([x, y]) => {
+            if (typeof x !== "number" || typeof y !== "number") {
+                return new Tree("g_implication", [x, y]);
+            }
+            return x <= y ? 1 : y;
         };
         this.j_implication = ([x, y]) => {
             if (typeof x !== "number" || typeof y !== "number") {

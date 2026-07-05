@@ -16,8 +16,8 @@ query	: expression "?"
 		| bochvar_conjunction
 		| sheffer_stroke
 		| strong_conjunction
-		| g_implication
 		| l_implication
+		| g_implication
 		| j_implication
 		| k_implication
 		| g_bi_implication
@@ -55,8 +55,8 @@ weak_conjunction	: expression "\\land" unary
 bochvar_conjunction	: expression "\\underset{+}{\\land}" unary
 sheffer_stroke		: expression "\\uparrow" unary
 strong_conjunction	: expression "\\otimes" unary
-g_implication		: expression "\\xrightarrow[G]{}" unary
 l_implication		: expression "\\xrightarrow[L]{}" unary
+g_implication		: expression "\\xrightarrow[G]{}" unary
 j_implication		: expression "\\xrightarrow[J]{}" unary
 k_implication		: expression "\\xrightarrow[K]{}" unary
 g_bi_implication	: expression "\\xleftrightarrow[G]{}" unary

@@ -182,20 +182,20 @@ export class LogicTransformer extends Transformer {
 		return Math.max(0, x + y - 1);
 	};
 
-	g_implication = ([x, y]: [Expression, Expression]): Expression => {
-		if (typeof x !== "number" || typeof y !== "number") {
-			return new Tree("g_implication", [x, y]);
-		}
-
-		return x <= y ? 1 : y;
-	};
-
 	l_implication = ([x, y]: [Expression, Expression]): Expression => {
 		if (typeof x !== "number" || typeof y !== "number") {
 			return new Tree("l_implication", [x, y]);
 		}
 
 		return Math.min(1, 1 - x + y);
+	};
+
+	g_implication = ([x, y]: [Expression, Expression]): Expression => {
+		if (typeof x !== "number" || typeof y !== "number") {
+			return new Tree("g_implication", [x, y]);
+		}
+
+		return x <= y ? 1 : y;
 	};
 
 	j_implication = ([x, y]: [Expression, Expression]): Expression => {
