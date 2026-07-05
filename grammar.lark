@@ -30,7 +30,7 @@ query	: expression "?"
 		| variable
 		| value
 
-weak_negation	: "\\sim" unary
+weak_negation	: "\\overline{" expression "}"
 strong_negation	: "\\lnot" unary
 distinction		: "\\nabla" unary
 crisp_truthness	: "\\Delta" unary
