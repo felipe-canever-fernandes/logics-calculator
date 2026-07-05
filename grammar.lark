@@ -12,6 +12,7 @@ query	: expression "?"
 		| bochvar_disjunction
 		| quine_dagger
 		| strong_disjunction
+		| exclusive_disjunction
 		| weak_conjunction
 		| bochvar_conjunction
 		| sheffer_stroke
@@ -53,28 +54,29 @@ consistency			: "\\circ" unary
 variable			: VARIABLE
 value				: VALUE
 
-weak_disjunction	: expression "\\lor" unary
-bochvar_disjunction	: expression "\\underset{+}{\\lor}" unary
-quine_dagger		: expression "\\downarrow" unary
-strong_disjunction	: expression "\\oplus" unary
-weak_conjunction	: expression "\\land" unary
-bochvar_conjunction	: expression "\\underset{+}{\\land}" unary
-sheffer_stroke		: expression "\\uparrow" unary
-strong_conjunction	: expression "\\otimes" unary
-l_implication		: expression "\\xrightarrow[L]{}" unary
-g_implication		: expression "\\xrightarrow[G]{}" unary
-j_implication		: expression "\\xrightarrow[J]{}" unary
-k_implication		: expression "\\xrightarrow[K]{}" unary
-bochvar_implication	: expression "\\xrightarrow[+]{}" unary
-r_implication		: expression "\\xrightarrow[R]{}" unary
-goguen_implication	: expression "\\xrightarrow[\\pi]{}" unary
-l_equivalence		: expression "\\xleftrightarrow[L]{}" unary
-g_equivalence		: expression "\\xleftrightarrow[G]{}" unary
-j_equivalence		: expression "\\xleftrightarrow[J]{}" unary
-k_equivalence		: expression "\\xleftrightarrow[K]{}" unary
-bochvar_equivalence	: expression "\\xleftrightarrow[+]{}" unary
-r_equivalence		: expression "\\xleftrightarrow[R]{}" unary
-goguen_equivalence	: expression "\\xleftrightarrow[\\pi]{}" unary
+weak_disjunction		: expression "\\lor" unary
+bochvar_disjunction		: expression "\\underset{+}{\\lor}" unary
+quine_dagger			: expression "\\downarrow" unary
+strong_disjunction		: expression "\\oplus" unary
+exclusive_disjunction	: expression "\\ominus" unary
+weak_conjunction		: expression "\\land" unary
+bochvar_conjunction		: expression "\\underset{+}{\\land}" unary
+sheffer_stroke			: expression "\\uparrow" unary
+strong_conjunction		: expression "\\otimes" unary
+l_implication			: expression "\\xrightarrow[L]{}" unary
+g_implication			: expression "\\xrightarrow[G]{}" unary
+j_implication			: expression "\\xrightarrow[J]{}" unary
+k_implication			: expression "\\xrightarrow[K]{}" unary
+bochvar_implication		: expression "\\xrightarrow[+]{}" unary
+r_implication			: expression "\\xrightarrow[R]{}" unary
+goguen_implication		: expression "\\xrightarrow[\\pi]{}" unary
+l_equivalence			: expression "\\xleftrightarrow[L]{}" unary
+g_equivalence			: expression "\\xleftrightarrow[G]{}" unary
+j_equivalence			: expression "\\xleftrightarrow[J]{}" unary
+k_equivalence			: expression "\\xleftrightarrow[K]{}" unary
+bochvar_equivalence		: expression "\\xleftrightarrow[+]{}" unary
+r_equivalence			: expression "\\xleftrightarrow[R]{}" unary
+goguen_equivalence		: expression "\\xleftrightarrow[\\pi]{}" unary
 
 VARIABLE	: /[a-z]/
 
