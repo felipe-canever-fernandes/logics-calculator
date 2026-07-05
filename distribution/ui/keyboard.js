@@ -7,57 +7,86 @@ export function setUpKeyboard() {
                 [
                     "0",
                     {
-                        latex: "\\frac{1}{2}",
-                        width: 1,
-                        class: "small",
+                        latex: "p",
+                        variants: [
+                            {
+                                latex: "q",
+                            },
+                        ],
                     },
-                    "1",
-                    {
-                        label: "[separator]",
-                        width: 0.5,
-                    },
-                    "p",
-                    "\\lnot",
-                    "\\sim",
-                    {
-                        label: "[separator]",
-                        width: 0.5,
-                    },
-                    "\\lor",
-                    "\\oplus",
-                    "\\land",
-                    "\\otimes",
                     {
                         label: "[separator]",
                         width: 0.5,
                     },
                     {
-                        label: "[backspace]",
-                        width: 1,
+                        latex: "\\overline{#@}",
+                        aside: "weak negation",
+                        variants: [
+                            {
+                                latex: "!",
+                                aside: "post negation",
+                            },
+                            {
+                                latex: "\\lnot",
+                                aside: "strong negation",
+                            },
+                        ],
                     },
-                ],
-                [
-                    "[(]",
-                    {
-                        label: "[separator]",
-                        width: 1,
-                    },
-                    "[)]",
-                    {
-                        label: "[separator]",
-                        width: 0.5,
-                    },
-                    "q",
-                    "\\nabla",
-                    "\\Delta",
                     {
                         label: "[separator]",
                         width: 0.5,
                     },
-                    "\\xrightarrow[G]{}",
-                    "\\xrightarrow[L]{}",
-                    "\\xrightarrow[J]{}",
-                    "\\xrightarrow[K]{}",
+                    {
+                        latex: "\\lor",
+                        aside: "weak disjunction",
+                        variants: [
+                            {
+                                latex: "\\underset{+}{\\lor}",
+                                aside: "Bochvar disjunction",
+                            },
+                        ],
+                    },
+                    {
+                        latex: "\\land",
+                        aside: "weak conjunction",
+                        variants: [
+                            {
+                                latex: "\\underset{+}{\\land}",
+                                aside: "Bochvar conjunction",
+                            },
+                        ],
+                    },
+                    {
+                        latex: "\\xrightarrow[L]{}",
+                        aside: "Łukasiewicz implication",
+                        width: 2,
+                        variants: [
+                            {
+                                latex: "\\xrightarrow[G]{}",
+                                aside: "Gödel implication",
+                            },
+                            {
+                                latex: "\\xrightarrow[J]{}",
+                                aside: "Jaśkowski implication",
+                            },
+                            {
+                                latex: "\\xrightarrow[K]{}",
+                                aside: "Kleene implication",
+                            },
+                            {
+                                latex: "\\xrightarrow[+]{}",
+                                aside: "Bochvar implication",
+                            },
+                            {
+                                latex: "\\xrightarrow[R]{}",
+                                aside: "R-mingle 3 implication",
+                            },
+                            {
+                                latex: "\\xrightarrow[\\pi]{}",
+                                aside: "Goguen implication",
+                            },
+                        ],
+                    },
                     {
                         label: "[separator]",
                         width: 0.5,
@@ -66,39 +95,134 @@ export function setUpKeyboard() {
                         label: "[hide-keyboard]",
                         width: 1,
                     },
+                    {
+                        label: "[backspace]",
+                        width: 1,
+                    },
                 ],
                 [
-                    "[left]",
                     {
-                        label: "[separator]",
+                        latex: "\\frac{1}{2}",
                         width: 1,
+                        class: "small",
                     },
-                    "[right]",
+                    "\\left(#@\\right)",
                     {
                         label: "[separator]",
                         width: 0.5,
                     },
-                    "?",
-                    "\\circ",
                     {
-                        label: "[separator]",
-                        width: 1,
+                        latex: "\\nabla",
+                        aside: "Mosil nabla operator",
+                        variants: [
+                            {
+                                latex: "\\Delta",
+                                aside: "Baaz delta operator",
+                            },
+                            {
+                                latex: "I",
+                                aside: "doubtful operator",
+                            },
+                        ],
                     },
                     {
                         label: "[separator]",
                         width: 0.5,
                     },
-                    "\\xleftrightarrow[G]{}",
-                    "\\xleftrightarrow[L]{}",
-                    "\\xleftrightarrow[J]{}",
-                    "\\xleftrightarrow[K]{}",
+                    {
+                        latex: "\\downarrow",
+                        aside: "Quine dagger",
+                    },
+                    {
+                        latex: "\\uparrow",
+                        aside: "Sheffer stroke",
+                    },
+                    {
+                        latex: "\\xleftrightarrow[L]{}",
+                        aside: "Łukasiewicz equivalence",
+                        width: 2,
+                        variants: [
+                            {
+                                latex: "\\xleftrightarrow[G]{}",
+                                aside: "Gödel equivalence",
+                            },
+                            {
+                                latex: "\\xleftrightarrow[J]{}",
+                                aside: "Jaśkowski equivalence",
+                            },
+                            {
+                                latex: "\\xleftrightarrow[K]{}",
+                                aside: "Kleene equivalence",
+                            },
+                            {
+                                latex: "\\xleftrightarrow[+]{}",
+                                aside: "Bochvar equivalence",
+                            },
+                            {
+                                latex: "\\xleftrightarrow[R]{}",
+                                aside: "R-mingle 3 equivalence",
+                            },
+                            {
+                                latex: "\\xleftrightarrow[\\pi]{}",
+                                aside: "Goguen equivalence",
+                            },
+                        ],
+                    },
+                    {
+                        label: "[separator]",
+                        width: 0.5,
+                    },
+                    {
+                        label: "[left]",
+                        width: 1,
+                    },
+                    {
+                        label: "[right]",
+                        width: 1,
+                    },
+                ],
+                [
+                    "1",
+                    {
+                        label: "?",
+                        aside: "validity",
+                    },
+                    {
+                        label: "[separator]",
+                        width: 0.5,
+                    },
+                    {
+                        latex: "\\circ",
+                        aside: "consistency",
+                    },
+                    {
+                        label: "[separator]",
+                        width: 0.5,
+                    },
+                    {
+                        latex: "\\oplus",
+                        aside: "strong disjunction",
+                    },
+                    {
+                        latex: "\\otimes",
+                        aside: "strong conjunction",
+                    },
+                    {
+                        latex: "\\ominus",
+                        aside: "exclusive disjunction",
+                    },
+                    {
+                        latex: "\\odot",
+                        aside: "product",
+                        width: 1,
+                    },
                     {
                         label: "[separator]",
                         width: 0.5,
                     },
                     {
                         label: "[return]",
-                        width: 1,
+                        width: 2,
                     },
                 ],
             ],

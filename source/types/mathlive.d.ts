@@ -14,11 +14,16 @@ interface MathliveVirtualKeyboardLayout {
 	rows: MathliveVirtualKeyboardKey[][];
 }
 
-type MathliveVirtualKeyboardKey = string | {
+type MathliveVirtualKeyboardKey = MathliveVirtualKeyboardVariant & {
+	width?: number;
+	variants?: MathliveVirtualKeyboardVariant[];
+}
+
+type MathliveVirtualKeyboardVariant = string | {
 	label?: string;
 	latex?: string;
-	width: number;
 	class?: string;
+	aside?: string;
 }
 
 declare const mathVirtualKeyboard: MathliveVirtualKeyboard;
