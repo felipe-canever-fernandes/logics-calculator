@@ -1,4 +1,4 @@
-export default function (eleventyConfig) {
+module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("styles.css");
 	eleventyConfig.addPassthroughCopy("font");
 	eleventyConfig.addPassthroughCopy("distribution");
@@ -9,6 +9,9 @@ export default function (eleventyConfig) {
 			output: "_site",
 			includes: "_includes",
 			data: "_data"
-		}
+		},
+		templateFormats: ["html"],
+		htmlTemplateEngine: false,
+		markdownTemplateEngine: false
 	};
 };
