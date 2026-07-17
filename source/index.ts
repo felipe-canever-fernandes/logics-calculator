@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 setUpKeyboard();
 
-inputField.addEventListener('beforeinput', (event: InputEvent) => {
-	if (event.inputType === 'insertLineBreak') {
+inputField.addEventListener("beforeinput", (event: InputEvent) => {
+	if (event.inputType === "insertLineBreak") {
 		calculate();
 	};
 });
