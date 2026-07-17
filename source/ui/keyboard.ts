@@ -25,7 +25,7 @@ export function setUpKeyboard() {
 
 					{
 						latex: "\\overline{#@}",
-						aside: "weak negation",
+						tooltip: "weak negation",
 
 						variants: [
 							{
@@ -37,6 +37,22 @@ export function setUpKeyboard() {
 								aside: "strong negation",
 							},
 						],
+
+						shift: {
+							latex: "\\overline{#@}",
+							tooltip: "strong negation",
+
+							variants: [
+								{
+									latex: "!",
+									aside: "post negation",
+								},
+								{
+									latex: "\\lnot",
+									aside: "weak negation",
+								},
+							],
+						},
 					},
 
 					{
@@ -247,8 +263,12 @@ export function setUpKeyboard() {
 					},
 
 					{
+						label: "[shift]",
+						width: 1,
+					},
+					{
 						label: "[return]",
-						width: 2,
+						width: 1,
 					},
 				],
 			],

@@ -17,6 +17,7 @@ interface MathliveVirtualKeyboardLayout {
 type MathliveVirtualKeyboardKey = MathliveVirtualKeyboardVariant & {
 	width?: number;
 	variants?: MathliveVirtualKeyboardVariant[];
+	shift?: MathliveVirtualKeyboardKey;
 }
 
 type MathliveVirtualKeyboardVariant = string | {
@@ -24,6 +25,7 @@ type MathliveVirtualKeyboardVariant = string | {
 	latex?: string;
 	class?: string;
 	aside?: string;
+	tooltip?: string;
 }
 
 declare const mathVirtualKeyboard: MathliveVirtualKeyboard;

@@ -117,3 +117,7 @@ main {
 .input-field::part(menu-toggle) {
 	display: none;
 }
+
+.MLK__shift {
+	display: none !important;
+}
