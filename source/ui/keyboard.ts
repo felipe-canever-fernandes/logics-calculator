@@ -1,4 +1,5 @@
 import { inputField } from "./dom.js";
+import { operations } from "./operations.js";
 
 export function setUpKeyboard() {
 	mathVirtualKeyboard.layouts = [
@@ -24,17 +25,14 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\overline{#@}",
-						aside: "weak negation",
+						operation: "weak-negation",
 
 						variants: [
 							{
-								latex: "!",
-								aside: "post negation",
+								operation: "post-negation",
 							},
 							{
-								latex: "\\lnot",
-								aside: "strong negation",
+								operation: "strong-negation",
 							},
 						],
 					},
@@ -45,60 +43,48 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\lor",
-						aside: "weak disjunction",
+						operation: "weak-disjunction",
 
 						variants: [
 							{
-								latex: "\\underset{+}{\\lor}",
-								aside: "Bochvar disjunction",
+								operation: "bochvar-disjunction",
 							},
 							{
-								latex: "\\ominus",
-								aside: "exclusive disjunction",
+								operation: "exclusive-disjunction",
 							},
 						],
 					},
 					{
-						latex: "\\land",
-						aside: "weak conjunction",
+						operation: "weak-conjunction",
 
 						variants: [
 							{
-								latex: "\\underset{+}{\\land}",
-								aside: "Bochvar conjunction",
+								operation: "bochvar-conjunction",
 							},
 						],
 					},
 					{
-						latex: "\\xrightarrow[L]{}",
-						aside: "Łukasiewicz implication",
+						operation: "l-implication",
 						width: 1.5,
 
 						variants: [
 							{
-								latex: "\\xrightarrow[G]{}",
-								aside: "Gödel implication",
+								operation: "g-implication",
 							},
 							{
-								latex: "\\xrightarrow[J]{}",
-								aside: "Jaśkowski implication",
+								operation: "j-implication",
 							},
 							{
-								latex: "\\xrightarrow[K]{}",
-								aside: "Kleene implication",
+								operation: "k-implication",
 							},
 							{
-								latex: "\\xrightarrow[+]{}",
-								aside: "Bochvar implication",
+								operation: "bochvar-implication",
 							},
 							{
-								latex: "\\xrightarrow[R]{}",
-								aside: "R-mingle 3 implication",
+								operation: "r-implication",
 							},
 							{
-								latex: "\\xrightarrow[\\pi]{}",
-								aside: "Goguen implication",
+								operation: "goguen-implication",
 							},
 						],
 					},
@@ -131,17 +117,14 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\nabla",
-						aside: "Mosil nabla",
+						operation: "mosil-nabla",
 
 						variants: [
 							{
-								latex: "\\Delta",
-								aside: "Baaz delta",
+								operation: "baaz-delta",
 							},
 							{
-								latex: "I",
-								aside: "doubtful operator",
+								operation: "doubtful-operator",
 							},
 						],
 					},
@@ -152,42 +135,33 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\downarrow",
-						aside: "Quine dagger",
+						operation: "quine-dagger",
 					},
 					{
-						latex: "\\uparrow",
-						aside: "Sheffer stroke",
+						operation: "sheffer-stroke",
 					},
 					{
-						latex: "\\xleftrightarrow[L]{}",
-						aside: "Łukasiewicz equivalence",
+						operation: "l-equivalence",
 						width: 1.5,
 
 						variants: [
 							{
-								latex: "\\xleftrightarrow[G]{}",
-								aside: "Gödel equivalence",
+								operation: "g-equivalence",
 							},
 							{
-								latex: "\\xleftrightarrow[J]{}",
-								aside: "Jaśkowski equivalence",
+								operation: "j-equivalence",
 							},
 							{
-								latex: "\\xleftrightarrow[K]{}",
-								aside: "Kleene equivalence",
+								operation: "k-equivalence",
 							},
 							{
-								latex: "\\xleftrightarrow[+]{}",
-								aside: "Bochvar equivalence",
+								operation: "bochvar-equivalence",
 							},
 							{
-								latex: "\\xleftrightarrow[R]{}",
-								aside: "R-mingle 3 equivalence",
+								operation: "r-equivalence",
 							},
 							{
-								latex: "\\xleftrightarrow[\\pi]{}",
-								aside: "Goguen equivalence",
+								operation: "goguen-equivalence",
 							},
 						],
 					},
@@ -219,8 +193,7 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\circ",
-						aside: "consistency",
+						operation: "consistency",
 					},
 
 					{
@@ -229,12 +202,10 @@ export function setUpKeyboard() {
 					},
 
 					{
-						latex: "\\oplus",
-						aside: "strong disjunction",
+						operation: "strong-disjunction",
 					},
 					{
-						latex: "\\otimes",
-						aside: "strong conjunction",
+						operation: "strong-conjunction",
 					},
 					{
 						label: "[separator]",
@@ -247,8 +218,12 @@ export function setUpKeyboard() {
 					},
 
 					{
+						label: "[shift]",
+						width: 1,
+					},
+					{
 						label: "[return]",
-						width: 2,
+						width: 1,
 					},
 				],
 			],
@@ -264,5 +239,43 @@ export function setUpKeyboard() {
 		},
 	];
 
+	generateOperationKeys();
 	inputField.menuItems = [];
+}
+
+function generateOperationKeys() {
+	for (const layout of mathVirtualKeyboard.layouts) {
+		for (const row of layout.rows) {
+			for (const key of row) {
+				generateOperationKey(key);
+
+				if (!key.variants) {
+					continue;
+				}
+
+				for (const variant of key.variants) {
+					generateOperationKey(variant);
+				}
+			}
+		}
+	}
+}
+
+function generateOperationKey(key: MathliveVirtualKeyboardKey) {
+	if (typeof key === "string") {
+		return;
+	}
+
+	if (!("operation" in key)) {
+		return;
+	}
+
+	if (!key.operation) {
+		return;
+	}
+
+	const operation = operations[key.operation];
+
+	key.latex = operation.latex;
+	key.aside = operation.name;
 }

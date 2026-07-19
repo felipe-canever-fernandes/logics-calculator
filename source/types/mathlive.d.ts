@@ -1,29 +1,45 @@
-interface HTMLMathFieldElement extends HTMLElement {
-	value: string;
-	menuItems: [];
+import { operations } from "../ui/operations";
 
-	getValue(): string;
+declare global {
+	interface HTMLMathFieldElement extends HTMLElement {
+		value: string;
+		menuItems: [];
+
+		getValue(): string;
+	}
+
+	interface HTMLMathSpanElement extends HTMLSpanElement {
+		render(): void;
+	}
+
+	interface MathliveVirtualKeyboard {
+		layouts: MathliveVirtualKeyboardLayout[];
+	}
+
+	interface MathliveVirtualKeyboardLayout {
+		label: string;
+		rows: MathliveVirtualKeyboardKey[][];
+	}
+
+	type MathliveVirtualKeyboardKey = MathliveVirtualKeyboardVariant & {
+		width?: number;
+		variants?: MathliveVirtualKeyboardVariant[];
+	}
+
+	type MathliveVirtualKeyboardVariant = string | {
+		operation?: keyof typeof operations;
+		label?: string;
+		latex?: string;
+		class?: string;
+		aside?: string;
+		tooltip?: string;
+		command?: string;
+	}
+
+
+	const mathVirtualKeyboard: MathliveVirtualKeyboard;
+
+	interface MathliveKeyboardCommandEvent extends Event {
+		detail: string;
+	}
 }
-
-interface MathliveVirtualKeyboard {
-	layouts: MathliveVirtualKeyboardLayout[];
-}
-
-interface MathliveVirtualKeyboardLayout {
-	label: string;
-	rows: MathliveVirtualKeyboardKey[][];
-}
-
-type MathliveVirtualKeyboardKey = MathliveVirtualKeyboardVariant & {
-	width?: number;
-	variants?: MathliveVirtualKeyboardVariant[];
-}
-
-type MathliveVirtualKeyboardVariant = string | {
-	label?: string;
-	latex?: string;
-	class?: string;
-	aside?: string;
-}
-
-declare const mathVirtualKeyboard: MathliveVirtualKeyboard;
