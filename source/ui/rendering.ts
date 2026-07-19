@@ -1,6 +1,18 @@
 import { Result, Validity } from "../logic/transformer.js";
-import { inputField, outputList } from "./dom.js";
+import { helpDialogTitleSymbol, helpDialogContentDiv, inputField, outputList, helpDialog, helpDialogTitleName } from "./dom.js";
 import { InvalidResult } from "./invalid-result.js";
+import { operations } from "./operations.js";
+
+export function showHelpModal(operationKey: string): void {
+	const operation = operations[operationKey];
+
+	helpDialogTitleSymbol.textContent = operation.latex;
+	helpDialogTitleSymbol.render();
+
+	helpDialogTitleName.textContent = operation.name;
+
+	helpDialog.showModal();
+}
 
 export function clearInput() {
 	inputField.value = "";

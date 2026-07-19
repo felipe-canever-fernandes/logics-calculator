@@ -247,26 +247,25 @@ function generateOperationKeys() {
 	for (const layout of mathVirtualKeyboard.layouts) {
 		for (const row of layout.rows) {
 			for (const key of row) {
-				generateOperationKey(key);
+				generateOperationKey(key, key);
 
 				if (!key.variants) {
 					continue;
 				}
 
 				for (const variant of key.variants) {
-					generateOperationKey(variant);
+					generateOperationKey(variant, key);
 				}
 			}
 		}
 	}
 }
 
-function generateOperationKey(key: MathliveVirtualKeyboardKey) {
+function generateOperationKey(
+	key: MathliveVirtualKeyboardKey,
+	parentKey: MathliveVirtualKeyboardKey,
+): void {
 	if (typeof key === "string") {
-		return;
-	}
-
-	if (!("operation" in key)) {
 		return;
 	}
 
@@ -278,4 +277,37 @@ function generateOperationKey(key: MathliveVirtualKeyboardKey) {
 
 	key.latex = operation.latex;
 	key.aside = operation.name;
+
+	generateHelpKey(key, parentKey);
+}
+
+
+function generateHelpKey(
+	key: MathliveVirtualKeyboardKey,
+	parentKey: MathliveVirtualKeyboardKey,
+): void {
+	if (typeof key === "string") {
+		throw new Error("key was not supposed to be a string");
+	}
+
+	const helpKey = {
+		latex: key.latex,
+		aside: key.aside,
+		command: `dispatchEvent("showHelpDialog", "${key.operation}")`,
+	} as MathliveVirtualKeyboardKey;
+
+	if (parentKey === key) {
+		parentKey.shift = helpKey;
+		return;
+	}
+
+	if (!parentKey.shift) {
+		throw new Error("parentKey.shift was not supposed to be undefined");
+	}
+
+	if (!parentKey.shift.variants) {
+		parentKey.shift.variants = [];
+	}
+
+	parentKey.shift.variants.push(helpKey);
 }

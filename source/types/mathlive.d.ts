@@ -24,6 +24,7 @@ declare global {
 	type MathliveVirtualKeyboardKey = MathliveVirtualKeyboardVariant & {
 		width?: number;
 		variants?: MathliveVirtualKeyboardVariant[];
+		shift?: MathliveVirtualKeyboardKey;
 	}
 
 	type MathliveVirtualKeyboardVariant = string | {

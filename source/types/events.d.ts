@@ -1,0 +1,3 @@
+interface HTMLElementEventMap {
+	showHelpDialog: MathliveKeyboardCommandEvent;
+}
