@@ -6,7 +6,9 @@ import { operations } from "./operations.js";
 export function showHelpModal(operationKey: string): void {
 	const operation = operations[operationKey];
 
-	helpDialogTitleSymbol.textContent = operation.latex;
+	let latex = operation.latex;
+	latex = latex.replace(/#@/g, "\\square");
+	helpDialogTitleSymbol.textContent = latex;
 	helpDialogTitleSymbol.render();
 
 	helpDialogTitleName.textContent = operation.name;
