@@ -117,3 +117,55 @@ main {
 .input-field::part(menu-toggle) {
 	display: none;
 }
+
+.MLK__shift {
+	display: none !important;
+}
+
+.help-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	min-width: 300px;
+
+	border: 1px solid gray;
+	border-radius: 4px;
+	padding: 16px;
+}
+
+.help-dialog .wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.help-dialog .close-button {
+	align-self: flex-end;
+	
+	border: none;
+	background: none;
+	font-family: inherit;
+	font-weight: bold;
+}
+
+.help-dialog .close-button:focus {
+	outline: none;
+}
+
+.help-dialog .close-button:hover {
+	cursor: pointer;
+	color: gray;
+}
+
+.help-dialog h2 {
+	font-size: 18px;
+}
+
+.help-dialog .title-symbol {
+	margin-right: 8px;
+}
+
+.help-dialog .content {
+	grid-column: 1 / -1;
+}
